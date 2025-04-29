@@ -3,45 +3,49 @@
 import React from "react";
 import Image from "next/image";
 import TrueFocus from "@/components/TrueFocus/TrueFocus";
+import GradientText from "@/components/GradientText/GradientText";
 
 const HomePage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="relative h-screen flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/image/bghome.png')",
-        }}
-      >
-        <div className="absolute inset-0 bg-ratih-dark bg-opacity-80"></div>
-        <div className="absolute inset-0 pattern-overlay"></div>
-
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-          <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              {/* <span className="text-white">ABOUT</span>
-              <span className="text-red-500 italic font-playfair"> Us</span> */}
-              <TrueFocus
-                sentence="About Us"
-                manualMode={false}
-                blurAmount={4}
-                borderColor="yellow"
-                animationDuration={2}
-                pauseBetweenAnimations={1}
-              />
-            </h1>
-            <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
-              Professional photography, videography, and graphic design services
-              in Surabaya, Malang, and Madiun.
-            </p>
-            <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
-              <a
-                href="#about"
-                className="bg-ratih-gold hover:bg-yellow-500 text-ratih-dark font-bold py-3 px-8 rounded-lg transition-colors duration-300"
-              >
-                Learn More
-              </a>
+      <section className="w-full min-h-screen px-0 mx-0 relative h-[100vh] flex items-center justify-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/bghome.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        
+        <div className="relative w-full flex items-center justify-center">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <div className="animate-fade-in-up relative z-20 -mt-16">
+              <h1 className="text-5xl md:text-7xl font-bold mb-6">
+                <GradientText
+                  colors={["#FFC727", "#cd9900", "#ffffff", "#cd9900", "#FFC727"]}
+                  showBorder={false}
+                  className="relative z-20 font-serif italic"
+                >
+                  <span className="text-white font-sans not-italic">ABOUT </span>
+                  US
+                </GradientText>
+              </h1>
+              <p className="text-xl md:text-2xl text-white mb-8 mx-auto">
+                Professional photography, videography, and graphic design services
+                in Surabaya, Malang, and Madiun.
+              </p>
+              <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
+                <a
+                  href="#about"
+                  className="bg-ratih-gold hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+                >
+                  Learn More
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -49,16 +53,15 @@ const HomePage = () => {
 
       {/* About Section */}
       <section id="about" className="py-20 bg-ratih-dark relative">
-        <div className="absolute inset-0 pattern-overlay"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-10">
             <div className="md:w-1/2 animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase text-white">
                 SEKILAS TENTANG
               </h2>
-              <div className="w-full max-w-md mx-auto mb-6">
+              <div className="w-full mx-auto mb-6">
                 <Image
-                  src="/upload-img/image.png"
+                  src="/image/RatihLogo.png"
                   alt="Ratih Creative Logo"
                   width={400}
                   height={400}
@@ -66,7 +69,7 @@ const HomePage = () => {
                 />
               </div>
               <div className="bg-white p-6 rounded-lg shadow-lg">
-                <span className="text-3xl font-bold text-ratih-gold">
+                <span className="text-3xl font-bold text-amber-300">
                   RATIH Creative
                 </span>
                 <p className="mt-4 text-gray-300">
@@ -90,13 +93,12 @@ const HomePage = () => {
 
       {/* Services Section */}
       <section className="py-20 bg-ratih-gray relative">
-        <div className="absolute inset-0 pattern-overlay"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               Our Services
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mx-auto">
               We provide professional services in photography, videography, and
               graphic design.
             </p>
@@ -166,7 +168,7 @@ const HomePage = () => {
                 key={index}
                 className="bg-ratih-dark p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="text-ratih-gold mb-4">{service.icon}</div>
+                <div className="text-amber-300 mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-3 text-white">
                   {service.title}
                 </h3>
@@ -179,20 +181,19 @@ const HomePage = () => {
 
       {/* CTA Section */}
       <section className="py-16 bg-ratih-dark relative">
-        <div className="absolute inset-0 pattern-overlay"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <div className="animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               Ready to Work With Us?
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mb-8 mx-auto">
               Let collaborate on your next project and bring your creative
               vision to life.
             </p>
             <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
               <a
                 href="/contact"
-                className="bg-ratih-gold hover:bg-yellow-500 text-ratih-dark font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+                className="bg-ratih-gold hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
               >
                 Contact Us
               </a>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from "next/link";
-import Layout from "../layout";
 
 const Articles: React.FC = () => {
   const articles = [
@@ -55,7 +54,7 @@ const Articles: React.FC = () => {
   ];
 
   return (
-    <Layout>
+    <>
       {/* Header Section */}
       <section className="pt-32 pb-16 bg-ratih-dark relative">
         <div className="absolute inset-0 pattern-overlay"></div>
@@ -65,7 +64,7 @@ const Articles: React.FC = () => {
               <span className="text-white">Our</span>
               <span className="text-ratih-gold italic font-playfair"> Articles</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mx-auto">
               Explore our latest insights, tips, and stories from the world of creative production.
             </p>
           </div>
@@ -89,14 +88,14 @@ const Articles: React.FC = () => {
                 /> */}
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-ratih-gold text-sm">{article.category}</span>
+                    <span className="text-amber-300 text-sm">{article.category}</span>
                     <span className="text-gray-400 text-sm">{article.date}</span>
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-white">{article.title}</h3>
                   <p className="text-gray-400 mb-4">{article.excerpt}</p>
                   <Link 
                     href={`/articles/${article.id}`}
-                    className="text-ratih-gold hover:text-yellow-500 transition-colors duration-300 font-medium"
+                    className="text-amber-300 hover:text-yellow-500 transition-colors duration-300 font-medium"
                   >
                     Read More →
                   </Link>
@@ -106,7 +105,7 @@ const Articles: React.FC = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

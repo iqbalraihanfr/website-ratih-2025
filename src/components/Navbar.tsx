@@ -31,8 +31,8 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className={`fixed bg-black w-full z-50 transition-all duration-1000 ${
-        isScrolled ? 'bg-transparent backdrop-blur-xs shadow-lg py-2' : 'bg-black py-4'
+      className={`fixed bg-transparent w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-transparent backdrop-blur-xs shadow-lg py-2' : 'bg-black py-2 duration-600'
       }`}
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.path}
-                className="text-white hover:text-ratih-gold transition-colors duration-300 font-medium"
+                className="text-white hover:text-amber-300 transition-colors duration-300 font-bold italic"
               >
                 {link.name}
               </Link>
@@ -85,14 +85,14 @@ const Navbar = () => {
           >
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
-                <link
+                <Link
                   key={link.name}
                   href={link.path}
-                  className="text-white hover:text-ratih-gold transition-colors duration-300 font-medium"
+                  className="text-white hover:text-ratih-gold transition-colors duration-300 font-medium italic"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
-                </link>
+                </Link>
               ))}
             </div>
           </motion.div>

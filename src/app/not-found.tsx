@@ -13,7 +13,7 @@ const NotFound: React.FC = () => {
           <h2 className="text-3xl font-bold text-gray-700 mb-6">
             Halaman Tidak Ditemukan
           </h2>
-          <p className="text-gray-600 mb-8 max-w-md mx-auto">
+          <p className="text-gray-600 mb-8">
             Maaf, halaman yang Anda cari tidak ditemukan atau telah dipindahkan.
           </p>
           <Link href="/" className="btn-primary inline-block">

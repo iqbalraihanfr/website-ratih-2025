@@ -5,26 +5,59 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    'animate-gradient',
+    'animate-shine',
+    'bg-clip-text',
+    'text-transparent',
+  ],
   theme: {
     extend: {
       keyframes: {
+        gradient: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
         shine: {
-          "0%": { "background-position": "100%" },
-          "100%": { "background-position": "-100%" },
+          "0%": { backgroundPosition: "100%" },
+          "100%": { backgroundPosition: "-100%" },
         },
       },
       animation: {
+        gradient: "gradient 5s ease infinite",
         shine: "shine 5s linear infinite",
       },
       colors: {
-        "ratih-dark": "var(--ratih-dark)",
-        "ratih-gold": "var(--ratih-gold)",
-        "ratih-gray": "var(--ratih-gray)",
-        "ratih-light": "var(--ratih-light)",
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: 'hsl(var(--primary))',
+        'primary-foreground': 'hsl(var(--primary-foreground))',
+        secondary: 'hsl(var(--secondary))',
+        'secondary-foreground': 'hsl(var(--secondary-foreground))',
+        destructive: 'hsl(var(--destructive))',
+        'destructive-foreground': 'hsl(var(--destructive-foreground))',
+        muted: 'hsl(var(--muted))',
+        'muted-foreground': 'hsl(var(--muted-foreground))',
+        accent: 'hsl(var(--accent))',
+        'accent-foreground': 'hsl(var(--accent-foreground))',
+        popover: 'hsl(var(--popover))',
+        'popover-foreground': 'hsl(var(--popover-foreground))',
+        card: 'hsl(var(--card))',
+        'card-foreground': 'hsl(var(--card-foreground))',
+        ratih: {
+          gold: '#F6C73B',
+          dark: '#121212',
+          darker: '#0A0A0A',
+          gray: '#222222'
+        },
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-        playfair: ["Playfair Display", "serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        playfair: ["var(--font-playfair)", "serif"],
       },
       container: {
         center: true,
@@ -40,21 +73,3 @@ module.exports = {
   },
   plugins: [],
 };
-
-// tailwind.config.js
-// module.exports = {
-//   theme: {
-//     extend: {
-//       keyframes: {
-//         shine: {
-//           '0%': { 'background-position': '100%' },
-//           '100%': { 'background-position': '-100%' },
-//         },
-//       },
-//       animation: {
-//         shine: 'shine 5s linear infinite',
-//       },
-//     },
-//   },
-//   plugins: [],
-// };
