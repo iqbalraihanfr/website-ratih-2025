@@ -56,8 +56,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-poppins)", "system-ui", "sans-serif"],
         playfair: ["var(--font-playfair)", "serif"],
+        poppins: ["var(--font-poppins)", "sans-serif"],
       },
       container: {
         center: true,

@@ -22,7 +22,7 @@ const HomePage = () => {
         <div className="absolute inset-0 bg-black/50" />
         
         <div className="relative w-full flex items-center justify-center">
-          <div className="container mx-auto px-4 md:px-6 text-center">
+          <div className="w-full px-4 md:px-6 text-center">
             <div className="animate-fade-in-up relative z-20 -mt-16">
               <h1 className="text-5xl md:text-7xl font-bold mb-6">
                 <GradientText
@@ -53,7 +53,7 @@ const HomePage = () => {
 
       {/* About Section */}
       <section id="about" className="py-20 bg-ratih-dark relative">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="w-full px-4 md:px-6 relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-10">
             <div className="md:w-1/2 animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase text-white">
@@ -92,8 +92,8 @@ const HomePage = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-ratih-gray relative">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <section className="py-20 bg-black relative">
+        <div className="w-full px-4 md:px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               Our Services
@@ -166,7 +166,7 @@ const HomePage = () => {
             ].map((service, index) => (
               <div
                 key={index}
-                className="bg-ratih-dark p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-black p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="text-amber-300 mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-3 text-white">
@@ -181,7 +181,7 @@ const HomePage = () => {
 
       {/* CTA Section */}
       <section className="py-16 bg-ratih-dark relative">
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="w-full px-4 md:px-6 relative z-10 text-center">
           <div className="animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               Ready to Work With Us?

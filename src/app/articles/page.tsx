@@ -60,11 +60,11 @@ const Articles: React.FC = () => {
         <div className="absolute inset-0 pattern-overlay"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-sans">
               <span className="text-white">Our</span>
               <span className="text-ratih-gold italic font-playfair"> Articles</span>
             </h1>
-            <p className="text-xl text-gray-300 mx-auto">
+            <p className="text-xl text-gray-300 mx-auto font-sans">
               Explore our latest insights, tips, and stories from the world of creative production.
             </p>
           </div>
@@ -79,7 +79,7 @@ const Articles: React.FC = () => {
             {articles.map((article) => (
               <div
                 key={article.id}
-                className="bg-ratih-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                className="bg-black rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
                 {/* <img 
                   src={article.image} 
@@ -88,14 +88,14 @@ const Articles: React.FC = () => {
                 /> */}
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-amber-300 text-sm">{article.category}</span>
-                    <span className="text-gray-400 text-sm">{article.date}</span>
+                    <span className="text-amber-300 text-sm font-sans">{article.category}</span>
+                    <span className="text-gray-400 text-sm font-sans">{article.date}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">{article.title}</h3>
-                  <p className="text-gray-400 mb-4">{article.excerpt}</p>
+                  <h3 className="text-xl font-bold mb-2 text-white font-sans">{article.title}</h3>
+                  <p className="text-gray-400 mb-4 font-sans">{article.excerpt}</p>
                   <Link 
                     href={`/articles/${article.id}`}
-                    className="text-amber-300 hover:text-yellow-500 transition-colors duration-300 font-medium"
+                    className="text-amber-300 hover:text-yellow-500 transition-colors duration-300 font-medium font-sans"
                   >
                     Read More →
                   </Link>

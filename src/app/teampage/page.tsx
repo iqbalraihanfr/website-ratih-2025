@@ -47,11 +47,11 @@ const TeamPage = () => {
         <div className="absolute inset-0 pattern-overlay"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-sans">
               <span className="text-white">Our</span>
               <span className="text-ratih-gold italic font-playfair"> Team</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-sans">
               Meet the talented individuals behind our creative projects.
             </p>
           </div>
@@ -66,7 +66,7 @@ const TeamPage = () => {
             {teamMembers.map((member, index) => (
               <div 
                 key={index}
-                className="bg-ratih-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                className="bg-black rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
                 {/* <img 
                   src={member.image} 
@@ -74,9 +74,9 @@ const TeamPage = () => {
                   className="w-full h-64 object-cover"
                 /> */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-1 text-white">{member.name}</h3>
-                  <p className="text-ratih-gold mb-3">{member.role}</p>
-                  <p className="text-gray-400">{member.bio}</p>
+                  <h3 className="text-xl font-bold mb-1 text-white font-sans">{member.name}</h3>
+                  <p className="text-ratih-gold mb-3 font-sans">{member.role}</p>
+                  <p className="text-gray-400 font-sans">{member.bio}</p>
                 </div>
               </div>
             ))}
@@ -89,8 +89,8 @@ const TeamPage = () => {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:w-2/3">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Our Creative Team</h2>
-              <p className="text-lg mb-0">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-sans">Join Our Creative Team</h2>
+              <p className="text-lg mb-0 font-sans">
                 Were always looking for talented individuals who are passionate about photography, videography, and design.
               </p>
             </div>
