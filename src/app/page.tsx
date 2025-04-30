@@ -1,10 +1,10 @@
 "use client";
-
 import React from "react";
 import Image from "next/image";
 import TrueFocus from "@/components/TrueFocus/TrueFocus";
 import GradientText from "@/components/GradientText/GradientText";
 import { motion } from "framer-motion";
+import TypewriterAnimation from '@/components/TypewriterAnimation';
 
 const HomePage = () => {
   return (
@@ -60,10 +60,17 @@ const HomePage = () => {
                   US
                 </GradientText>
               </h1>
-              <p className="text-xl md:text-2xl text-white mb-8 mx-auto">
-                Professional photography, videography, and graphic design
-                services in Surabaya, Malang, and Madiun.
-              </p>
+              <h1 className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
+            <TypewriterAnimation 
+                strings={[
+                  "RATIH Creative",
+                  "Photography Services",
+                  "Videography Productions",
+                  "Graphic Design Solutions"
+                ]}
+                className="h-10 flex items-center justify-center"
+              />
+            </h1>
               <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
                 <a
                   href="#about"
