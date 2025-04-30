@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import TrueFocus from "@/components/TrueFocus/TrueFocus";
 import GradientText from "@/components/GradientText/GradientText";
+import { motion } from "framer-motion";
 
 const HomePage = () => {
   return (
@@ -36,9 +37,26 @@ const HomePage = () => {
                   showBorder={false}
                   className="relative z-20 font-serif italic"
                 >
-                  <span className="text-white font-sans not-italic">
-                    ABOUT{" "}
-                  </span>
+                  <span className="text-white font-sans not-italic relative">
+                    ABOUT
+                    <svg
+                      viewBox="0 0 301 200"
+                      fill="none"
+                      className="absolute -left-2 -right-2 -top-2 bottom-0 translate-y-1"
+                    >
+                      <motion.path
+                        initial={{ pathLength: 0 }}
+                        whileInView={{ pathLength: 1 }}
+                        transition={{
+                          duration: 1.25,
+                          ease: "easeInOut",
+                        }}
+                        d="M149.293 1C106.854 16.8908 6.08202 7.17705 1.23654 43.3756C-2.10604 68.3466 29.5633 100.2652 180.700 99.7518C280.814 100.2384 316.298 70.689 275.761 38.0785C230.14 1.37835 97.0503 24.4575 52.9384 1"
+                        stroke="#FACC15"
+                        strokeWidth="3"
+                      />
+                    </svg>
+                  </span>{" "}
                   US
                 </GradientText>
               </h1>
