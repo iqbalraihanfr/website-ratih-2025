@@ -10,33 +10,41 @@ const HomePage = () => {
     <>
       {/* Hero Section */}
       <section className="w-full min-h-screen px-0 mx-0 relative h-[100vh] flex items-center justify-center">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url('/bghome.png')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
           }}
         />
         <div className="absolute inset-0 bg-black/50" />
-        
+
         <div className="relative w-full flex items-center justify-center">
           <div className="w-full px-4 md:px-6 text-center">
             <div className="animate-fade-in-up relative z-20 -mt-16">
               <h1 className="text-5xl md:text-7xl font-bold mb-6">
                 <GradientText
-                  colors={["#FFC727", "#cd9900", "#ffffff", "#cd9900", "#FFC727"]}
+                  colors={[
+                    "#FFC727",
+                    "#cd9900",
+                    "#ffffff",
+                    "#cd9900",
+                    "#FFC727",
+                  ]}
                   showBorder={false}
                   className="relative z-20 font-serif italic"
                 >
-                  <span className="text-white font-sans not-italic">ABOUT </span>
+                  <span className="text-white font-sans not-italic">
+                    ABOUT{" "}
+                  </span>
                   US
                 </GradientText>
               </h1>
               <p className="text-xl md:text-2xl text-white mb-8 mx-auto">
-                Professional photography, videography, and graphic design services
-                in Surabaya, Malang, and Madiun.
+                Professional photography, videography, and graphic design
+                services in Surabaya, Malang, and Madiun.
               </p>
               <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
                 <a
@@ -54,25 +62,37 @@ const HomePage = () => {
       {/* About Section */}
       <section id="about" className="py-20 bg-ratih-dark relative">
         <div className="w-full px-4 md:px-6 relative z-10">
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          <div className="flex flex-col md:flex-row items-start gap-10">
+            {/* Left side - Logo and Title */}
             <div className="md:w-1/2 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase text-white">
-                SEKILAS TENTANG
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase text-white text-center">
+                <TrueFocus
+                  sentence="Sekilas Tentang"
+                  manualMode={false}
+                  blurAmount={4}
+                  borderColor="yellow"
+                  animationDuration={2}
+                  pauseBetweenAnimations={1.5}
+                />
               </h2>
-              <div className="w-full mx-auto mb-6">
+              <div className="w-full mb-6 flex justify-center">
                 <Image
                   src="/image/RatihLogo.png"
                   alt="Ratih Creative Logo"
                   width={400}
                   height={400}
-                  className="w-full h-auto object-cover"
+                  className="w-md h-auto object-cover"
                 />
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-lg">
+            </div>
+
+            {/* Right side - Description */}
+            <div className="md:w-1/2 animate-fade-in">
+              <div className="p-6 rounded-lg shadow-lg bg-black/30">
                 <span className="text-3xl font-bold text-amber-300">
                   RATIH Creative
                 </span>
-                <p className="mt-4 text-gray-300">
+                <p className="mt-4 text-gray-300 justify-center">
                   Merupakan Sebuah Production House dengan tim sederhana yang
                   bergerak di bidang jasa Fotografi, Videografi dan Desain
                   Grafis. Terbentuk sejak November 2021. Perlu diketahui, kami
