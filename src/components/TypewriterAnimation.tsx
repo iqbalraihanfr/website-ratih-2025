@@ -10,11 +10,14 @@ interface TypewriterAnimationProps {
   loop?: boolean;
 }
 
+const DEFAULT_DELAY = 75;
+const DEFAULT_DELETE_SPEED = 50;
+
 const TypewriterAnimation: React.FC<TypewriterAnimationProps> = ({
   strings,
   className = "",
-  delay = 75,
-  deleteSpeed = 50,
+  delay = DEFAULT_DELAY,
+  deleteSpeed = DEFAULT_DELETE_SPEED,
   autoStart = true,
   loop = true,
 }) => {

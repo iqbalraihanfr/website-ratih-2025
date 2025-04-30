@@ -4,7 +4,69 @@ import Image from "next/image";
 import TrueFocus from "@/components/TrueFocus/TrueFocus";
 import GradientText from "@/components/GradientText/GradientText";
 import { motion } from "framer-motion";
-import TypewriterAnimation from '@/components/TypewriterAnimation';
+import TypewriterAnimation from "@/components/TypewriterAnimation";
+
+const services = [
+  {
+    title: "Photography",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-12 w-12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+        <circle cx="12" cy="13" r="3" />
+      </svg>
+    ),
+    description:
+      "Professional photography services for events, products, portraits, and more.",
+  },
+  {
+    title: "Videography",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-12 w-12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <polygon points="23 7 16 12 23 17 23 7" />
+        <rect width="15" height="14" x="1" y="5" rx="2" ry="2" />
+      </svg>
+    ),
+    description:
+      "High-quality video production for commercials, events, documentaries, and social media content.",
+  },
+  {
+    title: "Graphic Design",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-12 w-12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M12 3v18" />
+        <rect width="6" height="6" x="15" y="15" rx="1" />
+        <rect width="6" height="6" x="3" y="15" rx="1" />
+        <rect width="6" height="6" x="3" y="3" rx="1" />
+        <rect width="6" height="6" x="15" y="3" rx="1" />
+      </svg>
+    ),
+    description:
+      "Creative graphic design solutions for branding, marketing materials, social media, and more.",
+  },
+];
+
+const gradientColors = ["#FFC727", "#cd9900", "#ffffff", "#cd9900", "#FFC727"];
 
 const HomePage = () => {
   return (
@@ -27,13 +89,7 @@ const HomePage = () => {
             <div className="animate-fade-in-up relative z-20 -mt-16">
               <h1 className="text-5xl md:text-7xl font-bold mb-6">
                 <GradientText
-                  colors={[
-                    "#FFC727",
-                    "#cd9900",
-                    "#ffffff",
-                    "#cd9900",
-                    "#FFC727",
-                  ]}
+                  colors={gradientColors}
                   showBorder={false}
                   className="relative z-20 font-serif italic"
                 >
@@ -61,16 +117,16 @@ const HomePage = () => {
                 </GradientText>
               </h1>
               <h1 className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
-            <TypewriterAnimation 
-                strings={[
-                  "RATIH Creative",
-                  "Photography Services",
-                  "Videography Productions",
-                  "Graphic Design Solutions"
-                ]}
-                className="h-10 flex items-center justify-center"
-              />
-            </h1>
+                <TypewriterAnimation
+                  strings={[
+                    "RATIH Creative",
+                    "Photography Services",
+                    "Videography Productions",
+                    "Graphic Design Solutions",
+                  ]}
+                  className="h-10 flex items-center justify-center"
+                />
+              </h1>
               <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
                 <a
                   href="#about"
@@ -150,65 +206,7 @@ const HomePage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Photography",
-                icon: (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-12 w-12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-                    <circle cx="12" cy="13" r="3" />
-                  </svg>
-                ),
-                description:
-                  "Professional photography services for events, products, portraits, and more.",
-              },
-              {
-                title: "Videography",
-                icon: (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-12 w-12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <polygon points="23 7 16 12 23 17 23 7" />
-                    <rect width="15" height="14" x="1" y="5" rx="2" ry="2" />
-                  </svg>
-                ),
-                description:
-                  "High-quality video production for commercials, events, documentaries, and social media content.",
-              },
-              {
-                title: "Graphic Design",
-                icon: (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-12 w-12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M12 3v18" />
-                    <rect width="6" height="6" x="15" y="15" rx="1" />
-                    <rect width="6" height="6" x="3" y="15" rx="1" />
-                    <rect width="6" height="6" x="3" y="3" rx="1" />
-                    <rect width="6" height="6" x="15" y="3" rx="1" />
-                  </svg>
-                ),
-                description:
-                  "Creative graphic design solutions for branding, marketing materials, social media, and more.",
-              },
-            ].map((service, index) => (
+            {services.map((service, index) => (
               <div
                 key={index}
                 className="bg-black p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
