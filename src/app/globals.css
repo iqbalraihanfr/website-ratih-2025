@@ -33,11 +33,11 @@ body {
 
 :root {
   /* Ratih Colors */
-  --ratih-gold: #F6C73B;
+  --ratih-gold: #f6c73b;
   --ratih-dark: #121212;
-  --ratih-darker: #0A0A0A;
+  --ratih-darker: #0a0a0a;
   --ratih-gray: #222222;
-  
+
   /* System Colors */
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
@@ -84,28 +84,28 @@ body {
 
 @layer utilities {
   .bg-ratih-gold {
-    background-color: var(--ratih-gold);
+    background-color: var(--ratih-gold) !important;
   }
   .text-ratih-gold {
-    color: var(--ratih-gold);
+    color: var(--ratih-gold) !important;
   }
   .bg-ratih-dark {
-    background-color: var(--ratih-dark);
+    background-color: var(--ratih-dark) !important;
   }
   .text-ratih-dark {
-    color: var(--ratih-dark);
+    color: var(--ratih-dark) !important;
   }
   .bg-ratih-darker {
-    background-color: var(--ratih-darker);
+    background-color: var(--ratih-darker) !important;
   }
   .text-ratih-darker {
-    color: var(--ratih-darker);
+    color: var(--ratih-darker) !important;
   }
   .bg-ratih-gray {
-    background-color: var(--ratih-gray);
+    background-color: var(--ratih-gray) !important;
   }
   .text-ratih-gray {
-    color: var(--ratih-gray);
+    color: var(--ratih-gray) !important;
   }
 }
 

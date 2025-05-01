@@ -130,7 +130,7 @@ const HomePage = () => {
               <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
                 <a
                   href="#about"
-                  className="bg-ratih-gold hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+                  className="bg-transparent border-amber-300 border-1 hover:bg-yellow-500 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300"
                 >
                   Learn More
                 </a>
@@ -150,7 +150,7 @@ const HomePage = () => {
                 <TrueFocus
                   sentence="Sekilas Tentang"
                   manualMode={false}
-                  blurAmount={4}
+                  blurAmount={5}
                   borderColor="yellow"
                   animationDuration={2}
                   pauseBetweenAnimations={1.5}
