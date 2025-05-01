@@ -88,6 +88,7 @@ const HomePage = () => {
     {
       title: "Commercial Videography",
       src: "/image/TEST1.jpeg",
+      
     },
     {
       title: "Portrait Photography",
