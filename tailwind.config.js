@@ -49,7 +49,7 @@ module.exports = {
         card: 'hsl(var(--card))',
         'card-foreground': 'hsl(var(--card-foreground))',
         ratih: {
-          gold: '#F6C73B',
+          gold: '#ffc727',
           dark: '#121212',
           darker: '#0A0A0A',
           gray: '#222222'

@@ -4,12 +4,22 @@ import RatihLogo from "./RatihLogo";
 
 const Footer = () => {
   return (
-    <footer className="bg-ratih-dark py-12 relative overflow-hidden">
+    <footer className="bg-black py-12 relative overflow-hidden">
       <div className="absolute inset-0 pattern-overlay"></div>
       <div className="mx-4 px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <RatihLogo />
+            <div className="md:w-1/2">
+              <RatihLogo />
+            </div>
+            <div className="md:w-1/2">
+              <h1 className="md:w-1/2">
+                <span className=" text-white font-bold text-base">
+                  RATIH
+                </span>
+                <span className="text-ratih-gold text-base"> Creative</span>
+              </h1>
+            </div>
             <p className="mt-4 text-gray-400 max-w-md">
               A production house with a simple team working in photography,
               videography, and graphic design. Founded in November 2021.
@@ -79,7 +89,7 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-2">
-              <li>
+              <li className="py-1">
                 <Link
                   href="/"
                   className="text-gray-400 hover:text-ratih-gold transition-colors duration-300"
@@ -87,7 +97,7 @@ const Footer = () => {
                   Home
                 </Link>
               </li>
-              <li>
+              <li className="py-1">
                 <Link
                   href="/team"
                   className="text-gray-400 hover:text-ratih-gold transition-colors duration-300"
@@ -95,7 +105,7 @@ const Footer = () => {
                   Our Team
                 </Link>
               </li>
-              <li>
+              <li className="py-1">
                 <Link
                   href="/articles"
                   className="text-gray-400 hover:text-ratih-gold transition-colors duration-300"
@@ -103,7 +113,7 @@ const Footer = () => {
                   Articles
                 </Link>
               </li>
-              <li>
+              <li className="py-1">
                 <Link
                   href="/contact"
                   className="text-gray-400 hover:text-ratih-gold transition-colors duration-300"
@@ -117,7 +127,7 @@ const Footer = () => {
           <div>
             <h3 className="text-white text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-gray-400">
-              <li className="flex items-start space-x-3">
+              <li className="flex items-start space-x-3 py-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-6 mt-0.5 text-ratih-gold"
@@ -135,7 +145,7 @@ const Footer = () => {
                   Surabaya, Malang, and Madiun, Indonesia
                 </span>
               </li>
-              <li className="flex items-start space-x-3">
+              <li className="flex items-start space-x-3 py-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 mt-0.5 text-ratih-gold"
@@ -150,7 +160,7 @@ const Footer = () => {
                 </svg>
                 <span className="px-2">+62 812 3456 7890</span>
               </li>
-              <li className="flex items-start space-x-3">
+              <li className="flex items-start space-x-3 py-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 mt-0.5 text-ratih-gold"

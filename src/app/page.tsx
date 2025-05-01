@@ -142,7 +142,7 @@ const HomePage = () => {
 
       {/* About Section */}
       <section id="about" className="py-20 bg-ratih-dark relative">
-        <div className="w-full px-4 md:px-6 relative z-10">
+        <div className="w-full px-4 md:px-40 relative z-10">
           <div className="flex flex-col md:flex-row items-start gap-10">
             {/* Left side - Logo and Title */}
             <div className="md:w-1/2 animate-fade-in">
@@ -169,18 +169,18 @@ const HomePage = () => {
 
             {/* Right side - Description */}
             <div className="md:w-1/2 animate-fade-in">
-              <div className="p-6 rounded-lg shadow-lg bg-black/30">
-                <span className="text-3xl font-bold text-amber-300">
+              <div className="p-6 rounded-lg shadow-lg bg-black/0 text-lg">
+                
+                <p className="mt-4 text-gray-300 justify-center text-justify">
+                <span className=" font-bold text-ratih-gold italic">
                   RATIH Creative
-                </span>
-                <p className="mt-4 text-gray-300 justify-center">
-                  Merupakan Sebuah Production House dengan tim sederhana yang
+                </span> Merupakan Sebuah Production House dengan tim sederhana yang
                   bergerak di bidang jasa Fotografi, Videografi dan Desain
-                  Grafis. Terbentuk sejak November 2021. Perlu diketahui, kami
+                  Grafis. Terbentuk sejak <span className="text-ratih-gold">November 2021.</span> Perlu diketahui, kami
                   ahli dan handal soal menjepret kamera, disiplin, dan banyak
                   Gerakan tambahan di dalamnya.
                 </p>
-                <p className="mt-4 text-gray-300">
+                <p className="mt-4 text-gray-300 text-justify">
                   Berdiri dari kolaborasi kreativitas dan hobi yang sejalan,
                   membentuk suatu TIM yang tak mengenal lelah seperti filosofi
                   nama tim ini yaitu RATIH, dengan wilayah kerja yaitu Surabaya,
