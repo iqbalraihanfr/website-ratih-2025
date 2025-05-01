@@ -4,6 +4,11 @@ import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
+interface Card {
+  title: string;
+  src: string;
+}
+
 export const Card = React.memo(
   ({
     card,
@@ -11,7 +16,7 @@ export const Card = React.memo(
     hovered,
     setHovered,
   }: {
-    card: any;
+    card: Card;
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
@@ -24,10 +29,13 @@ export const Card = React.memo(
         hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
       )}
     >
-      <img
+      <Image
         src={card.src}
         alt={card.title}
-        className="object-cover absolute inset-0"
+        fill
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw, 33vw"
+        priority={index < 3}
       />
       <div
         className={cn(
@@ -44,11 +52,6 @@ export const Card = React.memo(
 );
 
 Card.displayName = "Card";
-
-type Card = {
-  title: string;
-  src: string;
-};
 
 export function FocusCards({ cards }: { cards: Card[] }) {
   const [hovered, setHovered] = useState<number | null>(null);

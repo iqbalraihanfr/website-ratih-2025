@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import TypewriterAnimation from "@/components/TypewriterAnimation";
 import { FocusCards } from "@/components/ui/focus-cards";
 import { SparklesText } from "@/components/magicui/sparkles-text";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const services = [
   {
@@ -174,50 +175,54 @@ const HomePage = () => {
         <div className="w-full px-4 md:px-40 pl-4 relative z-10">
           <div className="flex flex-col md:flex-row items-start gap-10">
             {/* Left side - Logo and Title */}
-            <div className="md:w-1/2 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase text-white text-center">
-                <TrueFocus
-                  sentence="Sekilas Tentang"
-                  manualMode={false}
-                  blurAmount={5}
-                  borderColor="yellow"
-                  animationDuration={2}
-                  pauseBetweenAnimations={1.5}
-                />
-              </h2>
-              <div className="w-full mb-6 justify-center">
-                <Image
-                  src="/image/RatihLogo.png"
-                  alt="Ratih Creative Logo"
-                  width={400}
-                  height={400}
-                  className="w-md h-auto object-cover"
-                />
+            <ScrollReveal>
+              <div className="md-full animate-fade-in">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase text-white text-center">
+                  <TrueFocus
+                    sentence="Sekilas Tentang"
+                    manualMode={false}
+                    blurAmount={5}
+                    borderColor="yellow"
+                    animationDuration={2}
+                    pauseBetweenAnimations={1.5}
+                  />
+                </h2>
+                <div className="w-full mb-6 justify-center">
+                  <Image
+                    src="/image/RatihLogo.png"
+                    alt="Ratih Creative Logo"
+                    width={400}
+                    height={400}
+                    className="w-md h-auto object-cover"
+                  />
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Right side - Description */}
-            <div className="md:w-1/2 animate-fade-in">
-              <div className="p-6 rounded-lg shadow-lg bg-black/0 text-lg">
-                <p className="mt-4 text-gray-300 justify-center text-justify">
-                  <span className=" font-bold text-ratih-gold italic">
-                    RATIH Creative
-                  </span>{" "}
-                  Merupakan Sebuah Production House dengan tim sederhana yang
-                  bergerak di bidang jasa Fotografi, Videografi dan Desain
-                  Grafis. Terbentuk sejak{" "}
-                  <span className="text-ratih-gold">November 2021.</span> Perlu
-                  diketahui, kami ahli dan handal soal menjepret kamera,
-                  disiplin, dan banyak Gerakan tambahan di dalamnya.
-                </p>
-                <p className="mt-4 text-gray-300 text-justify">
-                  Berdiri dari kolaborasi kreativitas dan hobi yang sejalan,
-                  membentuk suatu TIM yang tak mengenal lelah seperti filosofi
-                  nama tim ini yaitu RATIH, dengan wilayah kerja yaitu Surabaya,
-                  Malang dan Madiun.
-                </p>
+            <ScrollReveal delay={0.4}>
+              <div className="animate-fade-in">
+                <div className="p-6 rounded-lg shadow-lg bg-black/0 text-lg">
+                  <p className="mt-4 text-gray-300 justify-center text-justify">
+                    <span className=" font-bold text-ratih-gold italic">
+                      RATIH Creative
+                    </span>{" "}
+                    Merupakan Sebuah Production House dengan tim sederhana yang
+                    bergerak di bidang jasa Fotografi, Videografi dan Desain
+                    Grafis. Terbentuk sejak{" "}
+                    <span className="text-ratih-gold">November 2021.</span>{" "}
+                    Perlu diketahui, kami ahli dan handal soal menjepret kamera,
+                    disiplin, dan banyak Gerakan tambahan di dalamnya.
+                  </p>
+                  <p className="mt-4 text-gray-300 text-justify">
+                    Berdiri dari kolaborasi kreativitas dan hobi yang sejalan,
+                    membentuk suatu TIM yang tak mengenal lelah seperti filosofi
+                    nama tim ini yaitu RATIH, dengan wilayah kerja yaitu
+                    Surabaya, Malang dan Madiun.
+                  </p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -225,43 +230,49 @@ const HomePage = () => {
       {/* Showcase Section */}
       <section className="py-20 bg-black relative">
         <div className="w-full px-4 md:px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h1 className="text-xl md:text-md flex justify-center font-bold mb-2">
-              <SparklesText>Sedikit Jepretan</SparklesText>
-            </h1>
-            <h1 className="text-5xl md:text-xl text-ratih-gold flex justify-center font-bold mx-auto">
-              <SparklesText>RATIH</SparklesText>
-            </h1>
-          </div>
-          <FocusCards cards={showcaseCards} />
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h1 className="text-xl md:text-md flex justify-center font-bold mb-2">
+                <SparklesText>Sedikit Jepretan</SparklesText>
+              </h1>
+              <h1 className="text-5xl md:text-xl text-ratih-gold flex justify-center font-bold mx-auto">
+                <SparklesText>RATIH</SparklesText>
+              </h1>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.3}>
+            <FocusCards cards={showcaseCards} />
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Services Section */}
       <section className="py-20 bg-black relative">
         <div className="w-full px-4 md:px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-              Our Services
-            </h2>
-            <p className="text-xl text-gray-300 mx-auto">
-              We provide professional services in photography, videography, and
-              graphic design.
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                Our Services
+              </h2>
+              <p className="text-xl text-gray-300 mx-auto">
+                We provide professional services in photography, videography,
+                and graphic design.
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-black p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="text-amber-300 mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-3 text-white">
-                  {service.title}
-                </h3>
-                <p className="text-gray-400">{service.description}</p>
-              </div>
+              <ScrollReveal key={index} delay={0.2 * (index + 1)}>
+                <div className="bg-black p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="text-amber-300 mb-4">{service.icon}</div>
+                  <h3 className="text-xl font-bold mb-3 text-white">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-400">{service.description}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -270,23 +281,25 @@ const HomePage = () => {
       {/* CTA Section */}
       <section className="py-16 bg-ratih-dark relative">
         <div className="w-full px-4 md:px-6 relative z-10 text-center">
-          <div className="animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-              Ready to Work With Us?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 mx-auto">
-              Let collaborate on your next project and bring your creative
-              vision to life.
-            </p>
-            <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
-              <a
-                href="/contact"
-                className="bg-ratih-gold hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
-              >
-                Contact Us
-              </a>
+          <ScrollReveal>
+            <div className="animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                Ready to Work With Us?
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 mx-auto">
+                Let collaborate on your next project and bring your creative
+                vision to life.
+              </p>
+              <div className="transform transition-transform duration-300 hover:scale-105 active:scale-95">
+                <a
+                  href="/contact"
+                  className="bg-ratih-gold hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
+                >
+                  Contact Us
+                </a>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </>
