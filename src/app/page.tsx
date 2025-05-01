@@ -5,6 +5,8 @@ import TrueFocus from "@/components/TrueFocus/TrueFocus";
 import GradientText from "@/components/GradientText/GradientText";
 import { motion } from "framer-motion";
 import TypewriterAnimation from "@/components/TypewriterAnimation";
+import { FocusCards } from "@/components/ui/focus-cards";
+import { SparklesText } from "@/components/magicui/sparkles-text";
 
 const services = [
   {
@@ -69,6 +71,33 @@ const services = [
 const gradientColors = ["#FFC727", "#cd9900", "#ffffff", "#cd9900", "#FFC727"];
 
 const HomePage = () => {
+  const showcaseCards = [
+    {
+      title: "Kirab Budaya 2024",
+      src: "/image/gmbr1.png",
+    },
+    {
+      title: "Festival Dongkrek 2024",
+      src: "/image/gmbr2.png",
+    },
+    {
+      title: "Promosi UMKM 2024",
+      src: "/image/gmbr3.png",
+    },
+    {
+      title: "Commercial Videography",
+      src: "/image/TEST1.jpeg",
+    },
+    {
+      title: "Portrait Photography",
+      src: "/image/O2.JPG",
+    },
+    {
+      title: "Documentary Film",
+      src: "/image/TEST2.jpeg",
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -142,7 +171,7 @@ const HomePage = () => {
 
       {/* About Section */}
       <section id="about" className="py-20 bg-ratih-dark relative">
-        <div className="w-full px-4 md:px-40 relative z-10">
+        <div className="w-full px-4 md:px-40 pl-4 relative z-10">
           <div className="flex flex-col md:flex-row items-start gap-10">
             {/* Left side - Logo and Title */}
             <div className="md:w-1/2 animate-fade-in">
@@ -156,7 +185,7 @@ const HomePage = () => {
                   pauseBetweenAnimations={1.5}
                 />
               </h2>
-              <div className="w-full mb-6 flex justify-center">
+              <div className="w-full mb-6 justify-center">
                 <Image
                   src="/image/RatihLogo.png"
                   alt="Ratih Creative Logo"
@@ -170,15 +199,16 @@ const HomePage = () => {
             {/* Right side - Description */}
             <div className="md:w-1/2 animate-fade-in">
               <div className="p-6 rounded-lg shadow-lg bg-black/0 text-lg">
-                
                 <p className="mt-4 text-gray-300 justify-center text-justify">
-                <span className=" font-bold text-ratih-gold italic">
-                  RATIH Creative
-                </span> Merupakan Sebuah Production House dengan tim sederhana yang
+                  <span className=" font-bold text-ratih-gold italic">
+                    RATIH Creative
+                  </span>{" "}
+                  Merupakan Sebuah Production House dengan tim sederhana yang
                   bergerak di bidang jasa Fotografi, Videografi dan Desain
-                  Grafis. Terbentuk sejak <span className="text-ratih-gold">November 2021.</span> Perlu diketahui, kami
-                  ahli dan handal soal menjepret kamera, disiplin, dan banyak
-                  Gerakan tambahan di dalamnya.
+                  Grafis. Terbentuk sejak{" "}
+                  <span className="text-ratih-gold">November 2021.</span> Perlu
+                  diketahui, kami ahli dan handal soal menjepret kamera,
+                  disiplin, dan banyak Gerakan tambahan di dalamnya.
                 </p>
                 <p className="mt-4 text-gray-300 text-justify">
                   Berdiri dari kolaborasi kreativitas dan hobi yang sejalan,
@@ -189,6 +219,21 @@ const HomePage = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Showcase Section */}
+      <section className="py-20 bg-black relative">
+        <div className="w-full px-4 md:px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h1 className="text-xl md:text-md flex justify-center font-bold mb-2">
+              <SparklesText>Sedikit Jepretan</SparklesText>
+            </h1>
+            <h1 className="text-5xl md:text-xl text-ratih-gold flex justify-center font-bold mx-auto">
+              <SparklesText>RATIH</SparklesText>
+            </h1>
+          </div>
+          <FocusCards cards={showcaseCards} />
         </div>
       </section>
 

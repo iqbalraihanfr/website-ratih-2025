@@ -12,6 +12,19 @@ module.exports = {
     'text-transparent',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "2rem",
+        sm: "2rem",
+        lg: "4rem",
+        xl: "5rem",
+        "2xl": "6rem",
+      },
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       keyframes: {
         gradient: {
@@ -52,22 +65,12 @@ module.exports = {
           gold: '#ffc727',
           dark: '#121212',
           darker: '#0A0A0A',
-          gray: '#222222'
+          gray: '#222222',
         },
       },
       fontFamily: {
         sans: ["var(--font-poppins)", "system-ui", "sans"],
         playfair: ["var(--font-playfair)", "serif"],
-      },
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "1rem",
-          sm: "2rem",
-          lg: "4rem",
-          xl: "5rem",
-          "2xl": "6rem",
-        },
       },
     },
   },

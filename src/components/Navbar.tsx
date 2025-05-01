@@ -40,7 +40,7 @@ const Navbar = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 overflow-visible">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
             <RatihLogo />
@@ -52,7 +52,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.path}
-                className="text-white hover:text-amber-300 transition-colors duration-300 font-bold italic px-4"
+                className="text-white hover:text-amber-300 transition-colors duration-300 font-medium hover:italic px-4 tracking-wide "
               >
                 <TextBorderAnimation text={link.name} />
               </Link>
