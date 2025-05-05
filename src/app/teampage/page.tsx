@@ -1,100 +1,105 @@
 import React from "react";
 import Image from "next/image";
 
-const TeamPage = () => {
-  const teamMembers = [
-    {
-      name: "Jane Doe",
-      role: "Lead Photographer",
-      image: "/image/TEST1.jpeg",
-      bio: "Jane has over 10 years of experience capturing moments that tell powerful stories.",
-    },
-    {
-      name: "John Smith",
-      role: "Videography Director",
-      image: "/image/TEST2.jpeg",
-      bio: "John brings stories to life with his creative video direction and production skills.",
-    },
-    {
-      name: "Mark Wilson",
-      role: "Graphic Designer",
-      image: "/image/gmbr1.png",
-      bio: "Mark creates stunning visual designs that capture the essence of each brand.",
-    },
-    {
-      name: "Sarah Johnson",
-      role: "Marketing Specialist",
-      image: "/image/gmbr2.png",
-      bio: "Sarah ensures our creative work reaches the right audience at the right time.",
-    },
-    {
-      name: "Alex Chen",
-      role: "Creative Director",
-      image: "/image/gmbr3.png",
-      bio: "Alex oversees all creative projects, ensuring they meet our high standards.",
-    },
-    {
-      name: "Lisa Brown",
-      role: "Production Assistant",
-      image: "/image/O2.JPG",
-      bio: "Lisa keeps everything running smoothly behind the scenes.",
-    },
-  ];
+const teamMembers = [
+  { name: "V. Nathanael", role: "VIDEOGRAPHER" },
+  { name: "Andra Ariloka", role: "CONTENT WRITER" },
+  { name: "Favian Rifqi", role: "PHOTOGRAPHER" },
+  { name: "Iqbal Raihan F.R.", role: "WEB DEVELOPER" },
+  { name: "Afrizal Ahmad", role: "GRAPHIC DESIGNER" },
+  { name: "Jiersa Hilal", role: "VIDEO EDITOR" },
+  { name: "M. Afif Satrio W.", role: "WEB DEVELOPER" },
+];
 
+const positions = [
+  // Atur posisi manual agar bertingkat seperti di Figma
+  "left-[10%] top-[10%] z-20", // V. Nathanael
+  "left-[40%] top-[5%] z-30", // Andra Ariloka
+  "left-[70%] top-[12%] z-20", // Favian Rifqi
+  "left-[80%] top-[35%] z-10", // Iqbal Raihan
+  "left-[20%] top-[40%] z-10", // Afrizal Ahmad
+  "left-[50%] top-[45%] z-20", // Jiersa Hilal
+  "left-[65%] top-[55%] z-10", // M. Afif Satrio
+];
+
+const TeamPage = () => {
   return (
     <>
-      {/* Header */}
-      <section className="pt-32 pb-16 bg-ratih-dark relative">
-        <div className="absolute inset-0 pattern-overlay"></div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-          <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-sans">
-              <span className="text-white">Our</span>
-              <span className="text-ratih-gold italic font-playfair">
-                {" "}
-                Team
-              </span>
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-sans">
-              Meet the talented individuals behind our creative projects.
-            </p>
-          </div>
+      {/* Header & Background */}
+      <section className="relative min-h-[700px] bg-ratih-dark flex flex-col justify-start items-center overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/image/bghome.png"
+          alt="Background"
+          fill
+          className="object-cover opacity-60"
+          style={{ zIndex: 1 }}
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        {/* Ornamen Kuning (PNG Transparan) */}
+        <Image
+          src="/image/Ornamen.png"
+          alt="Ornamen"
+          width={60}
+          height={60}
+          className="absolute left-[5%] top-[20%] z-20"
+        />
+        <Image
+          src="/image/Ornamen.png"
+          alt="Ornamen"
+          width={60}
+          height={60}
+          className="absolute right-[5%] top-[30%] z-20"
+        />
+        <Image
+          src="/image/Ornamen.png"
+          alt="Ornamen"
+          width={40}
+          height={40}
+          className="absolute left-[15%] bottom-[10%] z-20"
+        />
+        {/* Judul */}
+        <div className="relative z-30 pt-32 pb-10 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-2 font-sans">
+            <span className="text-white">OUR </span>
+            <span className="text-ratih-gold italic font-playfair">TEAM</span>
+          </h1>
+          <p className="text-lg text-white/80 font-sans tracking-wide">
+            RATIH Creative
+          </p>
         </div>
-      </section>
-
-      {/* Team Members Grid */}
-      <section className="py-20 bg-ratih-dark relative">
-        <div className="absolute inset-0 pattern-overlay"></div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-black rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-              >
+        {/* Team Members Layered */}
+        <div className="relative w-full h-[500px] max-w-6xl mx-auto">
+          {teamMembers.map((member, idx) => (
+            <div
+              key={member.name}
+              className={`absolute ${positions[idx]} flex flex-col items-center group`}
+              style={{ width: 180 }}
+            >
+              <div className="rounded-xl overflow-hidden border-4 border-ratih-gold shadow-lg group-hover:scale-105 transition-transform duration-300 bg-black/60">
                 <Image
-                  src={member.image}
+                  src="/image/iqbal.png"
                   alt={member.name}
-                  width={400}
-                  height={300}
-                  className="w-full h-64 object-cover"
+                  width={180}
+                  height={220}
+                  className="object-cover w-[180px] h-[220px]"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-1 text-white font-sans">
-                    {member.name}
-                  </h3>
-                  <p className="text-ratih-gold mb-3 font-sans">
-                    {member.role}
-                  </p>
-                  <p className="text-gray-400 font-sans">{member.bio}</p>
+              </div>
+              <div className="mt-3 text-center">
+                <div className="text-lg font-bold text-white drop-shadow-md leading-tight">
+                  {member.name}
+                </div>
+                <div className="text-ratih-gold font-bold text-xs tracking-widest mt-1">
+                  {member.role}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Join Our Team Section */}
+      {/* Join Our Team Section (biarkan tetap modern) */}
       <section className="py-16 bg-ratih-gold text-ratih-dark relative">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -103,8 +108,8 @@ const TeamPage = () => {
                 Join Our Creative Team
               </h2>
               <p className="text-lg mb-0 font-sans">
-                Were always looking for talented individuals who are passionate
-                about photography, videography, and design.
+                We&apos;re always looking for talented individuals who are
+                passionate about photography, videography, and design.
               </p>
             </div>
             <div className="md:w-1/3 text-center md:text-right">
