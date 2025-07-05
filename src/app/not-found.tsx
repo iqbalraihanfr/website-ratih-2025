@@ -10,7 +10,7 @@ const NotFound: React.FC = () => {
         <div className="text-center">
           <div className="mb-8">
             <Image
-              src="/image/monyet2.png"
+              src="/image/monyet.png"
               alt="404 Illustration"
               width={400}
               height={400}
@@ -23,11 +23,11 @@ const NotFound: React.FC = () => {
           </h1>
           <h2 className="text-3xl font-bold text-gray-700 mb-6">
             {/* Halaman Tidak DitemukaN */}
-            MAAF YAHH BELUM SELESAI
+            Under Maintenance
           </h2>
           <p className="text-gray-600 mb-8">
             {/* Maaf, halaman yang Anda cari tidak ditemukan atau telah dipindahkan. */}
-            SABAAARRROOOOOOOOO
+            On Development
           </p>
           <Link href="/" className="btn-primary inline-block">
             Kembali ke Beranda
