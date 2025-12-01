@@ -32,3 +32,10 @@ export const ratihCrew = [
     {id: "5", name: "Afif Satrio", role: "Web Developer", imgURL: "/images/crew/apip-bg.png", altIMG: "Foto Apip", desc: ""},
     {id: "7", name: "Iqbal Raihan", role: "Web Developer", imgURL: "/images/crew/ibal-bg.png", altIMG: "Foto Iqbal", desc: ""}
 ]
+
+export const portfolio = [
+    {id: "1", title: "Gebyar Festival Dongkrek", imgURL: "/images/portfolio/festival-dongkrek.png"},
+    {id: "2", title: "Kirab Budaya Mejayan", imgURL: "/images/portfolio/kirab-budaya-mejayan.png"},
+    {id: "3", title: "Pahlawan Car Free Night", imgURL: "/images/portfolio/pahlawan-cfn.png"},
+    {id: "4", title: "Promosi UMKM", imgURL: "/images/portfolio/promosi-umkm.png"}
+]

@@ -4,14 +4,14 @@ import SocialMedia from "./SocialMedia"
 
 const RatihCrew = () => {
   return (
-    <div className="container mx-auto mt-30 mb-10">
-        <h1 className="text-sm text-center font-medium uppercase pt-10">Creative Team</h1>
-        <h1 className="text-center text-4xl font-bold italic uppercase">Dibalik Layar Ratih</h1>
+    <div className="container mt-30 mb-10">
+        <h1 className="md:text-sm text-xs text-center font-medium uppercase pt-10">Creative Team</h1>
+        <h1 className="text-center md:text-4xl text-2xl font-bold italic uppercase">Dibalik Layar Ratih</h1>
         {ratihCrew.map((crew) => (
-        <div className="mx-20 mt-10" key={crew.id}>
+        <div className="lg:mx-20 mx-10 mt-10" key={crew.id}>
             <div className="flex flex-col items-center lg:items-start mt-5">
                 <span className="text-xs xl:text-sm font-semibold italic uppercase opacity-50 xl:text-left text-center">{crew.role}</span>
-                <p className="w-fit text-3xl font-bold italic uppercase hover:text-yellow-500 transition-all xl:text-left text-center">{crew.name}</p>
+                <p className="w-fit md:text-3xl text-2xl font-bold italic uppercase hover:text-yellow-500 transition-all xl:text-left text-center">{crew.name}</p>
             </div>
             <div className="lg:flex-row flex flex-col items-center lg:gap-10">
                 <Image 

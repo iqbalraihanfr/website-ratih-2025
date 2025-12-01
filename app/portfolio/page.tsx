@@ -1,11 +1,11 @@
+import PortfolioContent from "@/components/PortfolioContent"
+import PortfolioHead from "@/components/PortfolioHead"
+
 const page = () => {
   return (
-    <div className="portfolio mx-auto pt-30 bg-zinc-950 h-screen">
-      <div className="flex flex-col items-center">
-        <span className="text-5xl font-semibold">
-          SABAR ASUK, DEVELOPER MASIH SIBUK MAEN MAGIC CHESS
-        </span>
-      </div>
+    <div className="portfolio mx-auto bg-zinc-950 pb-5">
+      <PortfolioHead />
+      <PortfolioContent />
     </div>
   )
 }

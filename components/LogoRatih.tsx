@@ -8,6 +8,7 @@ const LogoRatih = () => {
             alt={'Logo Ratih'}
             width={250}
             height={40}
+            className='scale-80 lg:scale-100'
         >
         </Image>
     </div>

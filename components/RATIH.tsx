@@ -1,6 +1,6 @@
 const RATIH = () => {
   return (
-    <div className='mt-20 grid grid-cols-1 lg:grid-cols-5 text-center gap-8 mx-20 mb-10'>
+    <div className='mt-20 grid grid-cols-1 lg:grid-cols-5 text-center gap-8 lg:mx-20 mx-15 mb-10'>
         <span className="font-bold italic text-xl">
             R "Reliability"
             <p className="font-medium italic text-yellow-500 text-lg">re·​li·​abil·​i·​ty </p>

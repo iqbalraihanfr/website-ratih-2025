@@ -1,6 +1,12 @@
+import ContactContent from "@/components/ContactContent"
+import ContactHead from "@/components/ContactHead"
+
 const page = () => {
   return (
-    <div className='mx-auto pt-30 bg-zinc-950 h-screen'>page</div>
+    <div className='mx-auto bg-zinc-950'>
+      <ContactHead />
+      <ContactContent />
+    </div>
   )
 }
 

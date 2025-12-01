@@ -1,5 +1,4 @@
 import Image from "next/image"
-import SocialMedia from "./SocialMedia"
 import Link from "next/link"
 
 const HomeSection = () => {
@@ -11,14 +10,14 @@ const HomeSection = () => {
           alt={"Logo Ratih"}
           width={80}
           height={0}
-          className="mb-5"
+          className="mb-5 scale-85 md:scale-100 transition-all"
           >
         </Image>
       </Link>
-      <h1 className="text-center text-6xl font-bold italic">
+      <h1 className="text-center md:text-6xl font-bold italic text-3xl transition-all">
         RATIH CREATIVE MEDIA
       </h1>
-      <span className="text-md mt-3 font-semibold">
+      <span className="md:text-base text-xs mt-3 font-semibold transition-all">
         A Digital Creative Agency Based On Madiun.
       </span>
     </div>
