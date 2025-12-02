@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import { headerData } from '@/constants'
 import { useState, useEffect } from 'react'
 import DesktopMenu from './DesktopMenu'
