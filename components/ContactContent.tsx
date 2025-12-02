@@ -32,7 +32,7 @@ const ContactContent = () => {
             rows={5}
             className="bg-zinc-800 p-4 rounded-md">
           </textarea>
-          <button className="w-fit bg-zinc-800 px-6 py-2.5 rounded-md mt-4 hover:bg-zinc-600 transition-all cursor-pointer">
+          <button className="w-fit bg-zinc-800 px-6 py-2.5 rounded-md mt-4 hover:bg-zinc-600 transition-all cursor-pointer hover:scale-90">
             <span className="text-sm font-semibold">Kirim Pesan</span>
           </button>
         </form>
