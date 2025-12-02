@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import Image from "next/legacy/image"
+import Image from "next/image"
 import { headerData } from '@/constants'
 import { useState, useEffect } from 'react'
 import DesktopMenu from './DesktopMenu'
@@ -58,11 +58,13 @@ const Header = () => {
               alt={logoItem.altText ?? 'Ratih Creative Logo'}
               width={40}
               height={40}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </Link>
         )}
       </header>
-
       <MobileMenu 
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
@@ -70,7 +72,7 @@ const Header = () => {
         menuItems={menuItems}
       />
     </>
-  )
+  );
 }
 
 export default Header

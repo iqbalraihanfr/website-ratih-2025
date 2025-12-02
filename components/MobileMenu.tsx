@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import Image from "next/legacy/image"
+import Image from "next/image"
 
 interface HeaderItem {
   id: number
@@ -44,7 +44,10 @@ const MobileMenu = ({
               alt={logoItem.altText ?? 'Ratih Creative Logo'}
               width={35}
               height={35}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           )}
           <span className='font-bold text-white text-lg uppercase italic'>
             Ratih Creative
@@ -66,7 +69,7 @@ const MobileMenu = ({
         </nav>
       </aside>
     </>
-  )
+  );
 }
 
 export default MobileMenu

@@ -1,4 +1,4 @@
-import Image from "next/legacy/image"
+import Image from "next/image"
 import Link from "next/link"
 
 const HomeSection = () => {
@@ -11,7 +11,10 @@ const HomeSection = () => {
           width={80}
           height={0}
           className="mb-5 scale-85 md:scale-100 transition-all"
-          >
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }}>
         </Image>
       </Link>
       <h1 className="text-center md:text-6xl font-bold italic text-3xl transition-all">
@@ -21,7 +24,7 @@ const HomeSection = () => {
         A Digital Creative Agency Based On Madiun.
       </span>
     </div>
-  )
+  );
 }
 
 export default HomeSection
