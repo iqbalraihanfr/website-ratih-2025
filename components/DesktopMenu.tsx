@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from "next/legacy/image"
+import Image from "next/image"
 
 interface HeaderItem {
   id: number
@@ -29,7 +29,10 @@ const DesktopMenu = ({ headerData }: DesktopMenuProps) => {
               alt={items.altText}
               width={50}
               height={50}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           ) : (
             <span className='font-bold uppercase italic transition-all'>
               {items.title}
@@ -38,7 +41,7 @@ const DesktopMenu = ({ headerData }: DesktopMenuProps) => {
         </Link>
       ))}
     </nav>
-  )
+  );
 }
 
 export default DesktopMenu
