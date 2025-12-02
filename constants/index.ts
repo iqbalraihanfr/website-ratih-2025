@@ -39,3 +39,7 @@ export const portfolio = [
     {id: "3", title: "Pahlawan Car Free Night", imgURL: "/images/portfolio/pahlawan-cfn.png"},
     {id: "4", title: "Promosi UMKM", imgURL: "/images/portfolio/promosi-umkm.png"}
 ]
+
+export const blog = [
+    {id: "", blogTitle: "", blogIMG: "", blogAltIMG: "", blogContent: "", blogAuthor: "", dateTime: ""},
+]
