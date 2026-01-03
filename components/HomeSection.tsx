@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const HomeSection = () => {
   return (
-    <div className='pt-60 flex flex-col items-center'>
+    <div className='pt-60 flex flex-col items-center relative min-h-screen'>
       <Link href={"/about"}>
         <Image
           src={"/images/logo-ratih-2.svg"}
