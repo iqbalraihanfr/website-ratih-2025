@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const FooterLogo = () => {
   return (
-    <div className="flex flex-row gap-4 items-center">
+    <div className="flex flex-row gap-4 items-center mb-10">
       <Image
         src={"/images/logo-ratih.svg"}
         alt={"Logo Ratih"}
@@ -12,8 +12,9 @@ const FooterLogo = () => {
           maxWidth: "100%",
           height: "auto"
         }} />
-      <span className="text-lg font-bold italic uppercase">
-      Ratih Creative
+      <span className="text-lg font-bold italic">
+      RATIH CREATIVE MEDIA
+      <p className="text-xs font-normal not-italic">Partner Kreatif Projectmu!</p>
       </span>
     </div>
   );
