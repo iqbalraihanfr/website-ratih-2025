@@ -29,6 +29,7 @@ const DesktopMenu = ({ headerData }: DesktopMenuProps) => {
               alt={items.altText}
               width={50}
               height={50}
+              className='hover:scale-105 transition-all cursor-pointer'
               style={{
                 maxWidth: "100%",
                 height: "auto"

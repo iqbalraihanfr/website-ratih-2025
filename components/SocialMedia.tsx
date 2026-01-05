@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const SocialMedia = () => {
   return (
-    <div className="flex flex-row mt-2 gap-2">
+    <div className="flex flex-row gap-2">
         {socialMedia.map((media) => (
           <Link 
             key={media.id} 
