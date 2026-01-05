@@ -24,20 +24,28 @@ export const socialMedia = [
 ]
 
 export const ratihCrew = [
-    {id: "1", name: "Afrizal Ahmad", role: "Graphic Designer", imgURL: "/images/crew/rizz-bg.png", altIMG: "Foto Rijal", desc: ""},
-    {id: "2", name: "Andra Ariloka", role: "Content Writer", imgURL: "/images/crew/andra-bg.png", altIMG: "Foto Andra", desc: ""},
-    {id: "4", name: "Favian Rifqi", role: "Photographer", imgURL: "/images/crew/pap-bg.png", altIMG: "Foto Pap", desc: ""},
-    {id: "6", name: "Valentinus Nathanael", role: "Videographer", imgURL: "/images/crew/nathan-bg.png", altIMG: "Foto Nathan", desc: ""},
-    {id: "3", name: "Jiersa Hilal", role: "Video Editor", imgURL: "/images/crew/jiersa-bg.png", altIMG: "Foto Jiersa", desc: ""},
-    {id: "5", name: "Afif Satrio", role: "Web Developer", imgURL: "/images/crew/apip-bg.png", altIMG: "Foto Apip", desc: ""},
-    {id: "7", name: "Iqbal Raihan", role: "Web Developer", imgURL: "/images/crew/ibal-bg.png", altIMG: "Foto Iqbal", desc: ""}
+    {id: "1", name: "Afrizal Ahmad", role: "Graphic Designer", imgURL: "/images/crew/rijal-bg.png", altIMG: "Foto Rijal", desc: ""},
+    {id: "2", name: "Andra Ariloka", role: "Content Writer", imgURL: "/images/crew/ndar-bg.png", altIMG: "Foto Andra", desc: ""},
+    {id: "4", name: "Favian Rifqi", role: "Photographer", imgURL: "/images/crew/yan-bg.png", altIMG: "Foto Pap", desc: ""},
+    {id: "6", name: "Valentinus Nathanael", role: "Videographer", imgURL: "/images/crew/nathann-bg.png", altIMG: "Foto Nathan", desc: ""},
+    {id: "3", name: "Jiersa Hilal", role: "Video Editor", imgURL: "/images/crew/sastra-bg.png", altIMG: "Foto Jiersa", desc: ""},
+    {id: "5", name: "Afif Satrio", role: "Web Developer", imgURL: "/images/crew/pipp-bg.png", altIMG: "Foto Apip", desc: ""},
+    {id: "7", name: "Iqbal Raihan", role: "Web Developer", imgURL: "/images/crew/raihaan-bg.png", altIMG: "Foto Iqbal", desc: ""}
 ]
 
 export const portfolio = [
-    {id: "1", title: "Gebyar Festival Dongkrek", imgURL: "/images/portfolio/festival-dongkrek.png"},
-    {id: "2", title: "Kirab Budaya Mejayan", imgURL: "/images/portfolio/kirab-budaya-mejayan.png"},
-    {id: "3", title: "Pahlawan Car Free Night", imgURL: "/images/portfolio/pahlawan-cfn.png"},
-    {id: "4", title: "Promosi UMKM", imgURL: "/images/portfolio/promosi-umkm.png"}
+    {id: "1", title: "Gebyar Festival Dongkrek", imgURL: "/images/portfolio/festival-dongkrek.png", category: "photography"},
+    {id: "2", title: "Kirab Budaya Mejayan", imgURL: "/images/portfolio/kirab-budaya-mejayan.png", category: "photography"},
+    {id: "3", title: "Pahlawan Car Free Night", imgURL: "/images/portfolio/pahlawan-cfn.png", category: "photography"},
+    {id: "4", title: "Promosi UMKM", imgURL: "/images/portfolio/promosi-umkm.png", category: "photography"}
+]
+
+export const services = [
+    {id: "1st", serviceTitle: "Fotografi", serviceDesc: "Layanan fotografi yang fokus pada visual yang kuat, detail yang rapi, dan mood yang sesuai karakter brand. Cocok untuk kebutuhan produk, campaign, company profile, hingga dokumentasi event sampai acara penting seperti wisuda dan acara pernikahan dengan tampilan yang lebih estetik, rapi dan  tetap standout.", serviceIMG: "/images/services/fotografi.png", altIMG: "Layanan Fotografi"},
+    {id: "2nd", serviceTitle: "Videografi", serviceDesc: "Produksi video dengan pendekatan visual yang cinematic dan storytelling yang relevan. Mulai dari video branding, company video, creative video, hingga short cinematic clip. Semuanya dirancang untuk ningkatin persepsi dan daya tarik brand di mata audiens.", serviceIMG: "/images/services/videografi.png", altIMG: "Layanan Videografi"},
+    {id: "3rd", serviceTitle: "Branding & Visual Identity", serviceDesc: "Ngebangun identitas brand dari dasar lewat logo, warna, tipografi, dan brand guideline yang terstruktur. Fokus kami adalah menciptakan identitas yang jelas, terstruktur, dan punya karakter yang kuat tapi mudah diingat, sehingga brand kalian tampil lebih baik dan profesional.", serviceIMG: "/images/services/branding.png", altIMG: "Layanan Branding"},
+    {id: "4th", serviceTitle: "Graphic Design", serviceDesc: "Desain visual untuk kebutuhan brand seperti poster, banner, feed, layout, dan kebutuhan promosi lainnya. Setiap desain dibuat dengan gaya modern dan komposisi yang bersih, biar pesan brand tersampaikan dengan kuat dan estetik.", serviceIMG: "/images/services/branding.png", altIMG: "Layanan Branding"},
+    {id: "5th", serviceTitle: "Short Movie Production", serviceDesc: "Produksi short movie dengan kualitas visual yang cinematic dan konsep cerita yang matang. Cocok untuk karya kreatif, campaign story, maupun konten yang butuh pendekatan storytelling yang lebih dalam dan emosional.", serviceIMG: "/images/services/branding.png", altIMG: "Layanan Branding"}
 ]
 
 export const blog = [
