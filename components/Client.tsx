@@ -1,5 +1,3 @@
-import * as motion from "motion/react-client"
-
 const Client = () => {
     const slides = [
         {num: 1},
@@ -14,17 +12,7 @@ const Client = () => {
 
   return (
     <div className="w-full relative overflow-hidden ">
-        <motion.div 
-        className="flex"
-        animate={{
-            x: ["0%", "-100%"],
-            transition: {
-                ease: "linear",
-                duration: 50,
-                repeat: Infinity,
-            }
-        }}
-        >
+        <div className="flex">
         {duplicateSlides.map((slide, index) => {
             return <div key={index} className="shrink-0" style={{width: `${100/slides.length}%`}}>
                 <div className="flex items-center justify-center text-6xl">
@@ -32,7 +20,7 @@ const Client = () => {
                 </div>
             </div>
         })}
-        </motion.div>
+        </div>
     </div>
   )
 }

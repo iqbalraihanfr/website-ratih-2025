@@ -1,17 +1,10 @@
 import Link from 'next/link'
 import Image from "next/image"
-
-interface HeaderItem {
-  id: number
-  href: string
-  title?: string
-  isLogo: boolean
-  logoURL?: string
-  altText: string
-}
+import type { NavigationItem } from '@/constants'
+import { storageUrl } from '@/lib/storage'
 
 interface DesktopMenuProps {
-  headerData: HeaderItem[]
+  headerData: NavigationItem[]
 }
 
 const DesktopMenu = ({ headerData }: DesktopMenuProps) => {
@@ -25,8 +18,8 @@ const DesktopMenu = ({ headerData }: DesktopMenuProps) => {
         >
           {items.isLogo ? (
             <Image
-              src={items.logoURL!}
-              alt={items.altText}
+              src={storageUrl(items.logoURL!)}
+              alt={items.altText ?? "Logo Ratih Creative"}
               width={50}
               height={50}
               className='hover:scale-105 transition-all cursor-pointer'

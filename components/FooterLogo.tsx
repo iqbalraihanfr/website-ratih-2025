@@ -1,10 +1,11 @@
 import Image from "next/image"
+import { storageUrl } from "@/lib/storage"
 
 const FooterLogo = () => {
   return (
     <div className="flex flex-row gap-4 items-center mb-10">
       <Image
-        src={"/images/logo-ratih.svg"}
+        src={storageUrl("logo-ratih.svg")}
         alt={"Logo Ratih"}
         width={50}
         height={50}

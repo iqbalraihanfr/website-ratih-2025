@@ -1,53 +1,181 @@
-import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react"
+import { siteConfig } from "@/lib/site";
 
-export const headerData = [
-    { id: "1", title: "About", href: "/about"},
-    { id: "2", title: "Portfolio", href: "/portfolio"},
-    { id: "3", title: "Logo", href: "/", isLogo: true, logoURL: "/images/logo-ratih.svg", altText:"Logo Ratih"},
-    { id: "4", title: "Contact", href: "/contact"},
-    { id: "5", title: "Blog", href: "/blog"}
-]
+export type NavigationItem = {
+  id: string;
+  title?: string;
+  href: string;
+  isLogo?: boolean;
+  logoURL?: string;
+  altText?: string;
+};
 
-export const footerData = [
-    { id: "1", title: "About", href: "/about"},
-    { id: "2", title: "Portfolio", href: "/portfolio"},
-    { id: "3", title: "Contact", href: "/contact"},
-    { id: "4", title: "Blog", href: "/blog"}
-]
+export type SocialLink = {
+  id: string;
+  label: string;
+  logo: string;
+  href: string;
+};
 
-export const socialMedia = [
-    {id: "1", logo: "ri-instagram-line", href: "/"},
-    {id: "2", logo: "ri-facebook-fill", href: "/"},
-    {id: "3", logo: "ri-whatsapp-line", href: "/"},
-    {id: "4", logo: "ri-twitter-x-fill", href: "/"},
-    {id: "5", logo: "ri-linkedin-box-fill", href: "/"},
-]
+export const headerData: NavigationItem[] = [
+  { id: "about", title: "About", href: "/about" },
+  { id: "portfolio", title: "Portfolio", href: "/portfolio" },
+  {
+    id: "logo",
+    title: "Logo",
+    href: "/",
+    isLogo: true,
+    logoURL: "logo-ratih.svg",
+    altText: "Logo Ratih Creative",
+  },
+  { id: "contact", title: "Contact", href: "/contact" },
+];
+
+export const footerData: NavigationItem[] = [
+  { id: "about", title: "About", href: "/about" },
+  { id: "portfolio", title: "Portfolio", href: "/portfolio" },
+  { id: "contact", title: "Contact", href: "/contact" },
+];
+
+export const socialMedia: SocialLink[] = [
+  {
+    id: "email",
+    label: "Kirim email ke Ratih Creative",
+    logo: "ri-mail-line",
+    href: `mailto:${siteConfig.email}`,
+  },
+  {
+    id: "whatsapp",
+    label: "Chat Ratih Creative via WhatsApp",
+    logo: "ri-whatsapp-line",
+    href: `https://wa.me/${siteConfig.phoneLink}`,
+  },
+];
 
 export const ratihCrew = [
-    {id: "1", name: "Afrizal Ahmad", role: "Graphic Designer", imgURL: "/images/crew/rijal-bg.png", altIMG: "Foto Rijal", desc: ""},
-    {id: "2", name: "Andra Ariloka", role: "Content Writer", imgURL: "/images/crew/ndar-bg.png", altIMG: "Foto Andra", desc: ""},
-    {id: "4", name: "Favian Rifqi", role: "Photographer", imgURL: "/images/crew/yan-bg.png", altIMG: "Foto Pap", desc: ""},
-    {id: "6", name: "Valentinus Nathanael", role: "Videographer", imgURL: "/images/crew/nathann-bg.png", altIMG: "Foto Nathan", desc: ""},
-    {id: "3", name: "Jiersa Hilal", role: "Video Editor", imgURL: "/images/crew/sastra-bg.png", altIMG: "Foto Jiersa", desc: ""},
-    {id: "5", name: "Afif Satrio", role: "Web Developer", imgURL: "/images/crew/pipp-bg.png", altIMG: "Foto Apip", desc: ""},
-    {id: "7", name: "Iqbal Raihan", role: "Web Developer", imgURL: "/images/crew/raihaan-bg.png", altIMG: "Foto Iqbal", desc: ""}
-]
+  {
+    id: "1",
+    name: "Afrizal Ahmad",
+    role: "Graphic Designer",
+    imgURL: "crew/rijal-bg.webp",
+    altIMG: "Potret Afrizal Ahmad",
+    desc: "Menerjemahkan kebutuhan brand menjadi visual yang rapi, kuat, dan tetap punya karakter yang mudah diingat.",
+  },
+  {
+    id: "2",
+    name: "Andra Ariloka",
+    role: "Content Writer",
+    imgURL: "crew/ndar-bg.webp",
+    altIMG: "Potret Andra Ariloka",
+    desc: "Membantu menyusun narasi dan copy yang relevan agar pesan brand terasa jelas dan dekat dengan audiens.",
+  },
+  {
+    id: "4",
+    name: "Favian Rifqi",
+    role: "Photographer",
+    imgURL: "crew/yan-bg.webp",
+    altIMG: "Potret Favian Rifqi",
+    desc: "Fokus pada detail visual dan momen penting untuk menghasilkan foto yang kuat secara teknis dan emosional.",
+  },
+  {
+    id: "6",
+    name: "Valentinus Nathanael",
+    role: "Videographer",
+    imgURL: "crew/nathann-bg.webp",
+    altIMG: "Potret Valentinus Nathanael",
+    desc: "Mengembangkan visual bergerak yang cinematic dan tetap efektif menyampaikan identitas sebuah brand.",
+  },
+  {
+    id: "3",
+    name: "Jiersa Hilal",
+    role: "Video Editor",
+    imgURL: "crew/sastra-bg.webp",
+    altIMG: "Potret Jiersa Hilal",
+    desc: "Mengolah footage menjadi cerita yang rapi, ritmis, dan enak ditonton di berbagai format distribusi.",
+  },
+  {
+    id: "5",
+    name: "Afif Satrio",
+    role: "Web Developer",
+    imgURL: "crew/pipp-bg.webp",
+    altIMG: "Potret Afif Satrio",
+    desc: "Menjembatani kebutuhan visual dan kebutuhan digital agar presentasi brand tetap konsisten di web.",
+  },
+  {
+    id: "7",
+    name: "Iqbal Raihan",
+    role: "Web Developer",
+    imgURL: "crew/raihaan-bg.webp",
+    altIMG: "Potret Iqbal Raihan",
+    desc: "Membangun pengalaman web yang cepat, rapi, dan mudah dipelihara untuk mendukung kebutuhan presentasi brand.",
+  },
+];
 
 export const portfolio = [
-    {id: "1", title: "Gebyar Festival Dongkrek", imgURL: "/images/portfolio/festival-dongkrek.png", category: "photography"},
-    {id: "2", title: "Kirab Budaya Mejayan", imgURL: "/images/portfolio/kirab-budaya-mejayan.png", category: "photography"},
-    {id: "3", title: "Pahlawan Car Free Night", imgURL: "/images/portfolio/pahlawan-cfn.png", category: "photography"},
-    {id: "4", title: "Promosi UMKM", imgURL: "/images/portfolio/promosi-umkm.png", category: "photography"}
-]
+  {
+    id: "1",
+    title: "Gebyar Festival Dongkrek",
+    imgURL: "portfolio/festival-dongkrek.webp",
+    category: "photography",
+  },
+  {
+    id: "2",
+    title: "Kirab Budaya Mejayan",
+    imgURL: "portfolio/kirab-budaya-mejayan.webp",
+    category: "photography",
+  },
+  {
+    id: "3",
+    title: "Pahlawan Car Free Night",
+    imgURL: "portfolio/pahlawan-cfn.webp",
+    category: "photography",
+  },
+  {
+    id: "4",
+    title: "Promosi UMKM",
+    imgURL: "portfolio/promosi-umkm.webp",
+    category: "photography",
+  },
+];
 
 export const services = [
-    {id: "1st", serviceTitle: "Fotografi", serviceDesc: "Layanan fotografi yang fokus pada visual yang kuat, detail yang rapi, dan mood yang sesuai karakter brand. Cocok untuk kebutuhan produk, campaign, company profile, hingga dokumentasi event sampai acara penting seperti wisuda dan acara pernikahan dengan tampilan yang lebih estetik, rapi dan  tetap standout.", serviceIMG: "/images/services/fotografi.png", altIMG: "Layanan Fotografi"},
-    {id: "2nd", serviceTitle: "Videografi", serviceDesc: "Produksi video dengan pendekatan visual yang cinematic dan storytelling yang relevan. Mulai dari video branding, company video, creative video, hingga short cinematic clip. Semuanya dirancang untuk ningkatin persepsi dan daya tarik brand di mata audiens.", serviceIMG: "/images/services/videografi.png", altIMG: "Layanan Videografi"},
-    {id: "3rd", serviceTitle: "Branding & Visual Identity", serviceDesc: "Ngebangun identitas brand dari dasar lewat logo, warna, tipografi, dan brand guideline yang terstruktur. Fokus kami adalah menciptakan identitas yang jelas, terstruktur, dan punya karakter yang kuat tapi mudah diingat, sehingga brand kalian tampil lebih baik dan profesional.", serviceIMG: "/images/services/branding.png", altIMG: "Layanan Branding"},
-    {id: "4th", serviceTitle: "Graphic Design", serviceDesc: "Desain visual untuk kebutuhan brand seperti poster, banner, feed, layout, dan kebutuhan promosi lainnya. Setiap desain dibuat dengan gaya modern dan komposisi yang bersih, biar pesan brand tersampaikan dengan kuat dan estetik.", serviceIMG: "/images/services/branding.png", altIMG: "Layanan Branding"},
-    {id: "5th", serviceTitle: "Short Movie Production", serviceDesc: "Produksi short movie dengan kualitas visual yang cinematic dan konsep cerita yang matang. Cocok untuk karya kreatif, campaign story, maupun konten yang butuh pendekatan storytelling yang lebih dalam dan emosional.", serviceIMG: "/images/services/branding.png", altIMG: "Layanan Branding"}
-]
-
-export const blog = [
-    {id: "", blogTitle: "", blogIMG: "", blogAltIMG: "", blogContent: "", blogAuthor: "", dateTime: ""},
-]
+  {
+    id: "1st",
+    serviceTitle: "Fotografi",
+    serviceDesc:
+      "Layanan fotografi yang fokus pada visual yang kuat, detail yang rapi, dan mood yang sesuai karakter brand. Cocok untuk kebutuhan produk, campaign, company profile, hingga dokumentasi event dan momen penting lainnya.",
+    serviceIMG: "portfolio/kirab-budaya-mejayan.webp",
+    altIMG: "Dokumentasi fotografi Ratih Creative",
+  },
+  {
+    id: "2nd",
+    serviceTitle: "Videografi",
+    serviceDesc:
+      "Produksi video dengan pendekatan visual yang cinematic dan storytelling yang relevan, mulai dari video branding, company profile, hingga short creative clip untuk kebutuhan kampanye digital.",
+    serviceIMG: "portfolio/festival-dongkrek.webp",
+    altIMG: "Produksi videografi Ratih Creative",
+  },
+  {
+    id: "3rd",
+    serviceTitle: "Branding & Visual Identity",
+    serviceDesc:
+      "Membangun identitas brand dari dasar lewat logo, warna, tipografi, dan brand guideline yang terstruktur agar brand tampil lebih jelas, profesional, dan mudah diingat.",
+    serviceIMG: "portfolio/promosi-umkm.webp",
+    altIMG: "Proses branding dan visual identity",
+  },
+  {
+    id: "4th",
+    serviceTitle: "Graphic Design",
+    serviceDesc:
+      "Desain visual untuk kebutuhan promosi seperti poster, banner, feed, dan materi campaign lain dengan komposisi yang modern, bersih, dan komunikatif.",
+    serviceIMG: "portfolio/pahlawan-cfn.webp",
+    altIMG: "Karya graphic design Ratih Creative",
+  },
+  {
+    id: "5th",
+    serviceTitle: "Short Movie Production",
+    serviceDesc:
+      "Produksi short movie dengan visual cinematic dan konsep cerita yang matang untuk campaign, karya kreatif, atau konten yang membutuhkan storytelling emosional.",
+    serviceIMG: "portfolio/festival-dongkrek.webp",
+    altIMG: "Produksi short movie Ratih Creative",
+  },
+];

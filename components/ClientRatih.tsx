@@ -3,7 +3,7 @@ import Client from "./Client"
 const ClientRatih = () => {
   return (
     <div>
-        <h1>Client Kami</h1>
+        <h2>Client Kami</h2>
         <Client />
     </div>
   )

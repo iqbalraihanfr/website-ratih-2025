@@ -1,21 +1,14 @@
 "use client"
 import Link from 'next/link'
 import Image from "next/image"
-
-interface HeaderItem {
-  id: number
-  href: string
-  title?: string
-  isLogo: boolean
-  logoURL?: string
-  altText: string
-}
+import type { NavigationItem } from '@/constants'
+import { storageUrl } from '@/lib/storage'
 
 interface MobileMenuProps {
   sidebarOpen: boolean
   setSidebarOpen: (value: boolean) => void
-  logoItem: HeaderItem | undefined
-  menuItems: HeaderItem[]
+  logoItem: NavigationItem | undefined
+  menuItems: NavigationItem[]
 }
 
 const MobileMenu = ({ 
@@ -33,6 +26,7 @@ const MobileMenu = ({
         />
       )}
       <aside
+        id="mobile-navigation"
         className={`fixed top-0 left-0 h-screen w-64 bg-zinc-900 transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
@@ -40,7 +34,7 @@ const MobileMenu = ({
         <div className='flex items-center gap-3 p-4 border-b border-zinc-700'>
           {logoItem && (
             <Image
-              src={logoItem.logoURL!}
+              src={storageUrl(logoItem.logoURL!)}
               alt={logoItem.altText ?? 'Ratih Creative Logo'}
               width={35}
               height={35}

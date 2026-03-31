@@ -1,5 +1,6 @@
 import { portfolio } from "@/constants"
 import Image from "next/image"
+import { storageUrl } from "@/lib/storage"
 
 const PortfolioContent = () => {
   return (
@@ -7,7 +8,7 @@ const PortfolioContent = () => {
       {portfolio.map((items) => (
       <div key={items.id} className="group relative flex flex-col items-center overflow-hidden rounded-md shadow-lg cursor-pointer">
         <Image
-          src={items.imgURL}
+          src={storageUrl(items.imgURL)}
           alt={items.title}
           width={1920}
           height={1080}

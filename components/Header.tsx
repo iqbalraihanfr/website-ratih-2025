@@ -1,11 +1,12 @@
 "use client"
-import Link from 'next/link'
 import Image from "next/image"
+import Link from 'next/link'
 import { headerData } from '@/constants'
 import { useState, useEffect } from 'react'
+import { storageUrl } from '@/lib/storage'
+import { X, Menu } from 'lucide-react'
 import DesktopMenu from './DesktopMenu'
 import MobileMenu from './MobileMenu'
-import { X, Menu } from 'lucide-react'
 
 const Header = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -38,6 +39,9 @@ const Header = () => {
           className='md:hidden z-50'
           onClick={() => setSidebarOpen(!sidebarOpen)}
           aria-label="Toggle menu"
+          aria-expanded={sidebarOpen}
+          aria-controls="mobile-navigation"
+          type="button"
         >
           {sidebarOpen ? (
             <X className="w-6 h-6 text-white" />
@@ -54,7 +58,7 @@ const Header = () => {
             className='md:hidden'
           >
             <Image
-              src={logoItem.logoURL!}
+              src={storageUrl(logoItem.logoURL!)}
               alt={logoItem.altText ?? 'Ratih Creative Logo'}
               width={40}
               height={40}
