@@ -12,8 +12,9 @@ async function seed() {
   // Seed team members
   const crewData = [
     {
-      name: "Rijal",
+      name: "Afrizal Ahmad",
       role: "Graphic Designer",
+      bio: "Menerjemahkan kebutuhan brand menjadi visual yang rapi, kuat, dan tetap punya karakter yang mudah diingat.",
       image_path: "crew/rijal-bg.webp",
       display_order: 1,
       social_links: [
@@ -22,8 +23,9 @@ async function seed() {
       ],
     },
     {
-      name: "Ndar",
+      name: "Andra Ariloka",
       role: "Content Writer",
+      bio: "Membantu menyusun narasi dan copy yang relevan agar pesan brand terasa jelas dan dekat dengan audiens.",
       image_path: "crew/ndar-bg.webp",
       display_order: 2,
       social_links: [
@@ -32,8 +34,9 @@ async function seed() {
       ],
     },
     {
-      name: "Yan",
+      name: "Favian Rifqi",
       role: "Photographer",
+      bio: "Fokus pada detail visual dan momen penting untuk menghasilkan foto yang kuat secara teknis dan emosional.",
       image_path: "crew/yan-bg.webp",
       display_order: 3,
       social_links: [
@@ -42,8 +45,9 @@ async function seed() {
       ],
     },
     {
-      name: "Nathann",
+      name: "Valentinus Nathanael",
       role: "Videographer",
+      bio: "Mengembangkan visual bergerak yang cinematic dan tetap efektif menyampaikan identitas sebuah brand.",
       image_path: "crew/nathann-bg.webp",
       display_order: 4,
       social_links: [
@@ -52,8 +56,9 @@ async function seed() {
       ],
     },
     {
-      name: "Sastra",
+      name: "Jiersa Hilal",
       role: "Video Editor",
+      bio: "Mengolah footage menjadi cerita yang rapi, ritmis, dan enak ditonton di berbagai format distribusi.",
       image_path: "crew/sastra-bg.webp",
       display_order: 5,
       social_links: [
@@ -62,8 +67,9 @@ async function seed() {
       ],
     },
     {
-      name: "Pipp",
+      name: "Afif Satrio",
       role: "Web Developer",
+      bio: "Menjembatani kebutuhan visual dan kebutuhan digital agar presentasi brand tetap konsisten di web.",
       image_path: "crew/pipp-bg.webp",
       display_order: 6,
       social_links: [
@@ -72,8 +78,9 @@ async function seed() {
       ],
     },
     {
-      name: "Raihaan",
+      name: "Iqbal Raihan",
       role: "Web Developer",
+      bio: "Membangun pengalaman web yang cepat, rapi, dan mudah dipelihara untuk mendukung kebutuhan presentasi brand.",
       image_path: "crew/raihaan-bg.webp",
       display_order: 7,
       social_links: [
