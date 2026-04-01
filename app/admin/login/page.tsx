@@ -14,8 +14,14 @@ export default function AdminLoginPage() {
         </h1>
         <form action={action} className="space-y-4">
           <div>
-            <label className="mb-1 block text-sm text-zinc-400">Email</label>
+            <label
+              htmlFor="email"
+              className="mb-1 block text-sm text-zinc-400"
+            >
+              Email
+            </label>
             <input
+              id="email"
               type="email"
               name="email"
               required
@@ -24,8 +30,14 @@ export default function AdminLoginPage() {
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm text-zinc-400">Password</label>
+            <label
+              htmlFor="password"
+              className="mb-1 block text-sm text-zinc-400"
+            >
+              Password
+            </label>
             <input
+              id="password"
               type="password"
               name="password"
               required
