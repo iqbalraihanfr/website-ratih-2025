@@ -1,9 +1,8 @@
 import { Mail, Phone } from "lucide-react"
-import { footerData } from "@/constants"
 import { siteConfig } from "@/lib/site"
 import FooterLogo from "./FooterLogo"
-import SocialMedia from "./SocialMedia"
-import Link from "next/link"
+import FooterMenu from "./FooterMenu"
+import SocialMedia from "@/components/shared/SocialMedia"
 
 const Footer = () => {
   return (
@@ -32,16 +31,8 @@ const Footer = () => {
                 <Mail className="h-4 w-4" />
                 {siteConfig.email}
               </a>
-              <div className="mt-2 flex flex-wrap gap-3">
-                {footerData.map((menu) => (
-                  <Link
-                    key={menu.id}
-                    href={menu.href}
-                    className="text-sm font-semibold uppercase italic text-zinc-400 transition-all hover:text-white"
-                  >
-                    {menu.title}
-                  </Link>
-                ))}
+              <div className="mt-2">
+                <FooterMenu />
               </div>
             </div>
             <SocialMedia />

@@ -3,13 +3,13 @@ import Link from "next/link"
 
 const FooterMenu = () => {
   return (
-    <div className="footermenu flex flex-row gap-10">
+    <div className="footermenu flex flex-wrap gap-3">
         {footerData.map((menu) => (
             <Link 
             key={menu.id}
             href={menu.href}
             >
-            <span className="font-bold uppercase italic text-zinc-400 hover:text-white transition-all">{menu.title}</span>
+            <span className="text-sm font-semibold uppercase italic text-zinc-400 transition-all hover:text-white">{menu.title}</span>
             </Link>
         ))}
     </div>
