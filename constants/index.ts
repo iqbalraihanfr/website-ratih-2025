@@ -28,12 +28,14 @@ export const headerData: NavigationItem[] = [
     altText: "Logo Ratih Creative",
   },
   { id: "contact", title: "Contact", href: "/contact" },
+  { id: "blog", title: "Blog", href: "/blog" },
 ];
 
 export const footerData: NavigationItem[] = [
   { id: "about", title: "About", href: "/about" },
   { id: "portfolio", title: "Portfolio", href: "/portfolio" },
   { id: "contact", title: "Contact", href: "/contact" },
+  { id: "blog", title: "Blog", href: "/blog" },
 ];
 
 export const socialMedia: SocialLink[] = [
