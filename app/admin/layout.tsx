@@ -1,16 +1,7 @@
-import { getSession } from "@/app/actions/auth";
-
-export default async function AdminLayout({
+export default function AdminRootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getSession();
-
-  if (!session) {
-    // Not authenticated — render children (login page will show)
-    return <>{children}</>;
-  }
-
-  return <>{children}</>;
+  return children;
 }

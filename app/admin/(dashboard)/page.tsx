@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-import { getSession } from "@/app/actions/auth";
 import { createServerClient } from "@/lib/supabase-server";
 
 const statCards = [
@@ -10,9 +8,6 @@ const statCards = [
 ] as const;
 
 export default async function AdminDashboard() {
-  const session = await getSession();
-  if (!session) redirect("/admin/login");
-
   const supabase = createServerClient();
 
   const counts = await Promise.all(

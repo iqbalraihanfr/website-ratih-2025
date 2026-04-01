@@ -1,32 +1,18 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getSession } from "@/app/actions/auth";
-import { createServerClient } from "@/lib/supabase-server";
 import { deleteService } from "@/app/actions/services";
-import type { Service } from "@/lib/types/database";
+import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
+import { listAdminServices } from "@/features/cms/services/queries";
 
 export default async function AdminServicesPage() {
-  const session = await getSession();
-  if (!session) redirect("/admin/login");
-
-  const supabase = createServerClient();
-  const { data: services } = await supabase
-    .from("services")
-    .select("*")
-    .order("display_order", { ascending: true });
+  const services = await listAdminServices();
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-bold text-white">Layanan</h1>
-        <Link
-          href="/admin/services/new"
-          className="flex items-center gap-2 px-4 py-2 bg-white text-zinc-950 rounded-lg text-sm font-medium hover:bg-zinc-100 transition-colors"
-        >
-          <i className="ri-add-line" />
-          Tambah Layanan
-        </Link>
-      </div>
+      <AdminPageHeader
+        title="Layanan"
+        ctaHref="/admin/services/new"
+        ctaLabel="Tambah Layanan"
+      />
 
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden">
         {!services?.length ? (
@@ -45,7 +31,7 @@ export default async function AdminServicesPage() {
               </tr>
             </thead>
             <tbody>
-              {(services as Service[]).map((service) => (
+              {services.map((service) => (
                 <tr
                   key={service.id}
                   className="border-b border-zinc-800 last:border-0"

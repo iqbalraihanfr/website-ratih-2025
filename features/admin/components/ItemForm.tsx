@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ImageUploader } from "@/components/admin/ImageUploader";
+import { ImageUploader } from "@/features/admin/components/ImageUploader";
 
 export interface ItemFormField {
   name: string;
@@ -37,11 +37,15 @@ export function ItemForm({
 
       {fields.map((field) => (
         <div key={field.name}>
-          <label className="block text-sm text-zinc-400 mb-1">
+          <label
+            htmlFor={field.name}
+            className="block text-sm text-zinc-400 mb-1"
+          >
             {field.label}
           </label>
           {field.type === "textarea" ? (
             <textarea
+              id={field.name}
               name={field.name}
               defaultValue={String(defaultValues[field.name] ?? "")}
               required={field.required}
@@ -50,6 +54,7 @@ export function ItemForm({
             />
           ) : (
             <input
+              id={field.name}
               name={field.name}
               defaultValue={String(defaultValues[field.name] ?? "")}
               required={field.required}
@@ -61,7 +66,9 @@ export function ItemForm({
       ))}
 
       <div>
-        <label className="block text-sm text-zinc-400 mb-2">Gambar</label>
+        <label className="block text-sm text-zinc-400 mb-2" htmlFor="image">
+          Gambar
+        </label>
         <ImageUploader
           folder={imageFolder}
           currentPath={imagePath || undefined}

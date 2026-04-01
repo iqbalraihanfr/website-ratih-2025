@@ -1,32 +1,18 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getSession } from "@/app/actions/auth";
-import { createServerClient } from "@/lib/supabase-server";
 import { deleteTeamMember } from "@/app/actions/crew";
-import type { TeamMember } from "@/lib/types/database";
+import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
+import { listAdminTeamMembers } from "@/features/cms/crew/queries";
 
 export default async function AdminCrewPage() {
-  const session = await getSession();
-  if (!session) redirect("/admin/login");
-
-  const supabase = createServerClient();
-  const { data: members } = await supabase
-    .from("team_members")
-    .select("*")
-    .order("display_order", { ascending: true });
+  const members = await listAdminTeamMembers();
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-bold text-white">Tim</h1>
-        <Link
-          href="/admin/crew/new"
-          className="flex items-center gap-2 px-4 py-2 bg-white text-zinc-950 rounded-lg text-sm font-medium hover:bg-zinc-100 transition-colors"
-        >
-          <i className="ri-add-line" />
-          Tambah Anggota
-        </Link>
-      </div>
+      <AdminPageHeader
+        title="Tim"
+        ctaHref="/admin/crew/new"
+        ctaLabel="Tambah Anggota"
+      />
 
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden">
         {!members?.length ? (
@@ -48,7 +34,7 @@ export default async function AdminCrewPage() {
               </tr>
             </thead>
             <tbody>
-              {(members as TeamMember[]).map((member) => (
+              {members.map((member) => (
                 <tr
                   key={member.id}
                   className="border-b border-zinc-800 last:border-0"

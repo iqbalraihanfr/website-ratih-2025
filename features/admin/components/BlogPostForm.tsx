@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ImageUploader } from "@/components/admin/ImageUploader";
+import { ImageUploader } from "@/features/admin/components/ImageUploader";
 import type { BlogPost } from "@/lib/types/database";
 
 interface Props {
@@ -20,8 +20,11 @@ export function BlogPostForm({ action, defaultValues }: Props) {
       <input type="hidden" name="cover_image_path" value={coverImagePath} />
 
       <div>
-        <label className="block text-sm text-zinc-400 mb-1">Judul</label>
+        <label htmlFor="title" className="block text-sm text-zinc-400 mb-1">
+          Judul
+        </label>
         <input
+          id="title"
           name="title"
           defaultValue={defaultValues?.title}
           required
@@ -30,8 +33,11 @@ export function BlogPostForm({ action, defaultValues }: Props) {
       </div>
 
       <div>
-        <label className="block text-sm text-zinc-400 mb-1">Excerpt</label>
+        <label htmlFor="excerpt" className="block text-sm text-zinc-400 mb-1">
+          Excerpt
+        </label>
         <textarea
+          id="excerpt"
           name="excerpt"
           defaultValue={defaultValues?.excerpt}
           rows={2}
@@ -40,8 +46,11 @@ export function BlogPostForm({ action, defaultValues }: Props) {
       </div>
 
       <div>
-        <label className="block text-sm text-zinc-400 mb-1">Konten</label>
+        <label htmlFor="content" className="block text-sm text-zinc-400 mb-1">
+          Konten
+        </label>
         <textarea
+          id="content"
           name="content"
           defaultValue={defaultValues?.content}
           rows={10}
@@ -50,8 +59,11 @@ export function BlogPostForm({ action, defaultValues }: Props) {
       </div>
 
       <div>
-        <label className="block text-sm text-zinc-400 mb-1">Author</label>
+        <label htmlFor="author" className="block text-sm text-zinc-400 mb-1">
+          Author
+        </label>
         <input
+          id="author"
           name="author"
           defaultValue={defaultValues?.author}
           required
@@ -60,7 +72,9 @@ export function BlogPostForm({ action, defaultValues }: Props) {
       </div>
 
       <div>
-        <label className="block text-sm text-zinc-400 mb-2">Cover Image</label>
+        <label className="block text-sm text-zinc-400 mb-2" htmlFor="image">
+          Cover Image
+        </label>
         <ImageUploader
           folder="blog"
           currentPath={coverImagePath || undefined}

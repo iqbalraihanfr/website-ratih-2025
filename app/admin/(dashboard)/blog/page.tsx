@@ -1,32 +1,18 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getSession } from "@/app/actions/auth";
-import { createServerClient } from "@/lib/supabase-server";
 import { deleteBlogPost } from "@/app/actions/blog";
-import type { BlogPost } from "@/lib/types/database";
+import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
+import { listAdminBlogPosts } from "@/features/cms/blog/queries";
 
 export default async function AdminBlogPage() {
-  const session = await getSession();
-  if (!session) redirect("/admin/login");
-
-  const supabase = createServerClient();
-  const { data: posts } = await supabase
-    .from("blog_posts")
-    .select("*")
-    .order("created_at", { ascending: false });
+  const posts = await listAdminBlogPosts();
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-bold text-white">Blog Posts</h1>
-        <Link
-          href="/admin/blog/new"
-          className="flex items-center gap-2 px-4 py-2 bg-white text-zinc-950 rounded-lg text-sm font-medium hover:bg-zinc-100 transition-colors"
-        >
-          <i className="ri-add-line" />
-          Tambah Post
-        </Link>
-      </div>
+      <AdminPageHeader
+        title="Blog Posts"
+        ctaHref="/admin/blog/new"
+        ctaLabel="Tambah Post"
+      />
 
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden">
         {!posts?.length ? (
@@ -48,7 +34,7 @@ export default async function AdminBlogPage() {
               </tr>
             </thead>
             <tbody>
-              {(posts as BlogPost[]).map((post) => (
+              {posts.map((post) => (
                 <tr
                   key={post.id}
                   className="border-b border-zinc-800 last:border-0"

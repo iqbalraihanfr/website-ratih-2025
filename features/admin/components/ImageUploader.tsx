@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { uploadImage } from "@/app/actions/upload";
+import { storageUrl } from "@/lib/storage";
 
 interface Props {
   folder: string;
@@ -15,13 +16,18 @@ export function ImageUploader({ folder, onUploaded, currentPath }: Props) {
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const currentUrl = currentPath
-    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/images/${currentPath}`
-    : null;
+  const currentUrl = currentPath ? storageUrl(currentPath) : null;
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      setError("Ukuran gambar maksimal 5MB.");
+      if (inputRef.current) inputRef.current.value = "";
+      return;
+    }
+
+    setError(null);
     const reader = new FileReader();
     reader.onload = () => setPreview(reader.result as string);
     reader.readAsDataURL(file);
@@ -44,7 +50,7 @@ export function ImageUploader({ folder, onUploaded, currentPath }: Props) {
     setUploading(false);
 
     if ("error" in result) {
-      setError(result.error);
+      setError(result.error ?? "Upload gambar gagal.");
     } else {
       setPreview(null);
       if (inputRef.current) inputRef.current.value = "";
@@ -71,6 +77,7 @@ export function ImageUploader({ folder, onUploaded, currentPath }: Props) {
         <i className="ri-upload-cloud-2-line text-2xl text-zinc-400 mb-1" />
         <span className="text-zinc-400 text-sm">Klik untuk pilih gambar</span>
         <input
+          id="image"
           ref={inputRef}
           type="file"
           accept="image/*"
@@ -80,6 +87,9 @@ export function ImageUploader({ folder, onUploaded, currentPath }: Props) {
       </label>
 
       {error && <p className="text-red-400 text-sm">{error}</p>}
+      <p className="text-xs text-zinc-500">
+        Format yang didukung: JPG, PNG, WEBP, AVIF. Maksimal 5MB.
+      </p>
 
       <button
         type="submit"

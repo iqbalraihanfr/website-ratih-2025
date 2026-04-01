@@ -1,32 +1,18 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { getSession } from "@/app/actions/auth";
-import { createServerClient } from "@/lib/supabase-server";
 import { deletePortfolioItem } from "@/app/actions/portfolio";
-import type { PortfolioItem } from "@/lib/types/database";
+import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
+import { listAdminPortfolioItems } from "@/features/cms/portfolio/queries";
 
 export default async function AdminPortfolioPage() {
-  const session = await getSession();
-  if (!session) redirect("/admin/login");
-
-  const supabase = createServerClient();
-  const { data: items } = await supabase
-    .from("portfolio_items")
-    .select("*")
-    .order("display_order", { ascending: true });
+  const items = await listAdminPortfolioItems();
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-bold text-white">Portfolio</h1>
-        <Link
-          href="/admin/portfolio/new"
-          className="flex items-center gap-2 px-4 py-2 bg-white text-zinc-950 rounded-lg text-sm font-medium hover:bg-zinc-100 transition-colors"
-        >
-          <i className="ri-add-line" />
-          Tambah Item
-        </Link>
-      </div>
+      <AdminPageHeader
+        title="Portfolio"
+        ctaHref="/admin/portfolio/new"
+        ctaLabel="Tambah Item"
+      />
 
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden">
         {!items?.length ? (
@@ -48,7 +34,7 @@ export default async function AdminPortfolioPage() {
               </tr>
             </thead>
             <tbody>
-              {(items as PortfolioItem[]).map((item) => (
+              {items.map((item) => (
                 <tr
                   key={item.id}
                   className="border-b border-zinc-800 last:border-0"
