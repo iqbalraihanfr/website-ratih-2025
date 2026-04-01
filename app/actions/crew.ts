@@ -26,6 +26,7 @@ export async function createTeamMember(formData: FormData): Promise<void> {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/crew");
+  revalidatePath("/about");
   redirect("/admin/crew");
 }
 
@@ -51,6 +52,7 @@ export async function updateTeamMember(
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/crew");
+  revalidatePath("/about");
   redirect("/admin/crew");
 }
 
@@ -63,4 +65,5 @@ export async function deleteTeamMember(id: string): Promise<void> {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/crew");
+  revalidatePath("/about");
 }

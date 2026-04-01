@@ -25,6 +25,7 @@ export async function createPortfolioItem(formData: FormData): Promise<void> {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/portfolio");
+  revalidatePath("/portfolio");
   redirect("/admin/portfolio");
 }
 
@@ -50,6 +51,7 @@ export async function updatePortfolioItem(
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/portfolio");
+  revalidatePath("/portfolio");
   redirect("/admin/portfolio");
 }
 
@@ -65,4 +67,5 @@ export async function deletePortfolioItem(id: string): Promise<void> {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/portfolio");
+  revalidatePath("/portfolio");
 }

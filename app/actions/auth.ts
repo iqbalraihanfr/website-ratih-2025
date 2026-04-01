@@ -11,7 +11,10 @@ function getSupabase() {
   );
 }
 
-export async function login(formData: FormData): Promise<void> {
+export async function login(
+  _prev: string | null,
+  formData: FormData
+): Promise<string | null> {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const supabase = getSupabase();
@@ -22,8 +25,7 @@ export async function login(formData: FormData): Promise<void> {
   });
 
   if (error) {
-    // Error display will be added in a later task
-    return;
+    return "Email atau password salah. Coba lagi.";
   }
 
   const cookieStore = await cookies();
@@ -43,6 +45,7 @@ export async function login(formData: FormData): Promise<void> {
   });
 
   redirect("/admin");
+  return null;
 }
 
 export async function logout() {

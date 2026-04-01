@@ -24,6 +24,7 @@ export async function createService(formData: FormData): Promise<void> {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/services");
+  revalidatePath("/");
   redirect("/admin/services");
 }
 
@@ -48,6 +49,7 @@ export async function updateService(
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/services");
+  revalidatePath("/");
   redirect("/admin/services");
 }
 
@@ -60,4 +62,5 @@ export async function deleteService(id: string): Promise<void> {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/services");
+  revalidatePath("/");
 }

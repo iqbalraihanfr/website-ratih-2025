@@ -43,6 +43,7 @@ export async function createBlogPost(formData: FormData): Promise<void> {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/blog");
+  revalidatePath("/blog");
   redirect("/admin/blog");
 }
 
@@ -60,6 +61,21 @@ export async function updateBlogPost(
   const cover_image_path = (formData.get("cover_image_path") as string) || "";
   const is_published = formData.get("is_published") === "true";
 
+  // Fetch current published_at so we don't reset it on re-save
+  const { data: existing } = await supabase
+    .from("blog_posts")
+    .select("published_at, is_published")
+    .eq("id", id)
+    .single();
+
+  let published_at: string | null = existing?.published_at ?? null;
+  if (is_published && !existing?.is_published) {
+    // First time being published — set timestamp now
+    published_at = new Date().toISOString();
+  } else if (!is_published) {
+    published_at = null;
+  }
+
   const { error } = await supabase
     .from("blog_posts")
     .update({
@@ -70,7 +86,7 @@ export async function updateBlogPost(
       author,
       cover_image_path,
       is_published,
-      published_at: is_published ? new Date().toISOString() : null,
+      published_at,
       updated_at: new Date().toISOString(),
     })
     .eq("id", id);
@@ -78,6 +94,7 @@ export async function updateBlogPost(
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/blog");
+  revalidatePath("/blog");
   redirect("/admin/blog");
 }
 
@@ -90,4 +107,5 @@ export async function deleteBlogPost(id: string): Promise<void> {
   if (error) throw new Error(error.message);
 
   revalidatePath("/admin/blog");
+  revalidatePath("/blog");
 }

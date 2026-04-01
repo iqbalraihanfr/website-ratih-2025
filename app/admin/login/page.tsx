@@ -1,13 +1,18 @@
+"use client";
+
+import { useActionState } from "react";
 import { login } from "@/app/actions/auth";
 
 export default function AdminLoginPage() {
+  const [error, action, pending] = useActionState(login, null);
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-950">
       <div className="w-full max-w-sm rounded-lg border border-zinc-800 bg-zinc-900 p-8">
         <h1 className="mb-6 text-center text-2xl font-bold text-white">
           Admin Login
         </h1>
-        <form action={login} className="space-y-4">
+        <form action={action} className="space-y-4">
           <div>
             <label className="mb-1 block text-sm text-zinc-400">Email</label>
             <input
@@ -28,11 +33,17 @@ export default function AdminLoginPage() {
               placeholder="********"
             />
           </div>
+          {error && (
+            <p className="rounded-md bg-red-900/40 px-3 py-2 text-sm text-red-400">
+              {error}
+            </p>
+          )}
           <button
             type="submit"
-            className="w-full rounded-md bg-yellow-500 px-4 py-2 font-semibold text-zinc-900 hover:bg-yellow-400 transition-colors"
+            disabled={pending}
+            className="w-full rounded-md bg-yellow-500 px-4 py-2 font-semibold text-zinc-900 hover:bg-yellow-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Masuk
+            {pending ? "Masuk..." : "Masuk"}
           </button>
         </form>
       </div>
