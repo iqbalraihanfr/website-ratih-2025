@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import SocialMedia from "./SocialMedia"
+import SocialMedia from "@/components/shared/SocialMedia";
 import { siteConfig } from "@/lib/site";
 
 const ContactContent = () => {

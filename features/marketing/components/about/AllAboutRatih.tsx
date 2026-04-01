@@ -1,5 +1,5 @@
-import LogoRatih from './LogoRatih'
-import AboutRatih from './AboutRatih'
+import LogoRatih from "@/components/shared/LogoRatih";
+import AboutRatih from "@/features/marketing/components/about/AboutRatih";
 
 const AllAboutRatih = () => {
   return (

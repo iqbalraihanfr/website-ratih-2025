@@ -1,17 +1,10 @@
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
-import { createServerClient } from "@/lib/supabase-server"
 import { storageUrl } from "@/lib/storage"
-import type { Service } from "@/lib/types/database"
+import { listServices } from "@/features/cms/services/queries"
 
 const JasaRatih = async () => {
-  const supabase = createServerClient()
-  const { data } = await supabase
-    .from("services")
-    .select("*")
-    .order("display_order", { ascending: true })
-
-  const services = (data as Service[]) ?? []
+  const services = await listServices()
 
   if (!services.length) return null
 
@@ -35,8 +28,9 @@ const JasaRatih = async () => {
               src={storageUrl(item.image_path)}
               alt={item.title}
               width={480}
-              height={0}
+              height={600}
               className="rounded-md"
+              style={{ width: "100%", height: "auto" }}
             />
           )}
         </div>

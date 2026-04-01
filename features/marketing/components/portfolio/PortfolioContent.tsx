@@ -1,16 +1,9 @@
 import Image from "next/image"
-import { createServerClient } from "@/lib/supabase-server"
 import { storageUrl } from "@/lib/storage"
-import type { PortfolioItem } from "@/lib/types/database"
+import { listPortfolioItems } from "@/features/cms/portfolio/queries"
 
 const PortfolioContent = async () => {
-  const supabase = createServerClient()
-  const { data } = await supabase
-    .from("portfolio_items")
-    .select("*")
-    .order("display_order", { ascending: true })
-
-  const items = (data as PortfolioItem[]) ?? []
+  const items = await listPortfolioItems()
 
   if (!items.length) return null
 

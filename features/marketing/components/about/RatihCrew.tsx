@@ -1,16 +1,9 @@
 import Image from "next/image"
-import { createServerClient } from "@/lib/supabase-server"
 import { storageUrl } from "@/lib/storage"
-import type { TeamMember } from "@/lib/types/database"
+import { listTeamMembers } from "@/features/cms/crew/queries"
 
 const RatihCrew = async () => {
-  const supabase = createServerClient()
-  const { data } = await supabase
-    .from("team_members")
-    .select("*")
-    .order("display_order", { ascending: true })
-
-  const crew = (data as TeamMember[]) ?? []
+  const crew = await listTeamMembers()
 
   if (!crew.length) return null
 

@@ -1,18 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { createServerClient } from "@/lib/supabase-server";
 import { storageUrl } from "@/lib/storage";
-import type { BlogPost } from "@/lib/types/database";
+import { listPublishedBlogPosts } from "@/features/cms/blog/queries";
 
 const BlogContent = async () => {
-  const supabase = createServerClient();
-  const { data } = await supabase
-    .from("blog_posts")
-    .select("*")
-    .eq("is_published", true)
-    .order("published_at", { ascending: false });
-
-  const posts = (data as BlogPost[]) ?? [];
+  const posts = await listPublishedBlogPosts();
 
   if (!posts.length) {
     return (
