@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import PortfolioContent from "@/features/marketing/components/portfolio/PortfolioContent";
+import { PortfolioContent } from "@/features/marketing/components/portfolio";
 import { PageHero } from "@/components/ui/PageHero";
 import { createPageMetadata } from "@/lib/site";
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = createPageMetadata({
   path: "/portfolio",
 });
 
-const page = () => {
+export default function PortfolioPage() {
   return (
     <div className="portfolio mx-auto bg-zinc-950 pb-5">
       <PageHero
@@ -21,7 +21,5 @@ const page = () => {
       />
       <PortfolioContent />
     </div>
-  )
+  );
 }
-
-export default page

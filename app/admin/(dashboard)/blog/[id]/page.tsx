@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
-import { updateBlogPost } from "@/features/cms/blog/actions";
-import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
-import { BlogPostForm } from "@/features/admin/components/BlogPostForm";
+import { updateBlogPost } from "@/app/actions/blog";
+import { AdminPageHeader, BlogPostForm } from "@/features/admin/components";
 import { getAdminBlogPost } from "@/features/cms/blog/queries";
 
 export default async function EditBlogPostPage({

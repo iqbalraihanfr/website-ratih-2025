@@ -1,6 +1,5 @@
-import { createBlogPost } from "@/features/cms/blog/actions";
-import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
-import { BlogPostForm } from "@/features/admin/components/BlogPostForm";
+import { createBlogPost } from "@/app/actions/blog";
+import { AdminPageHeader, BlogPostForm } from "@/features/admin/components";
 
 export default async function NewBlogPostPage() {
   return (

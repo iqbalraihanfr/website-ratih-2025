@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { deleteService } from "@/features/cms/services/actions";
-import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
+import { deleteService } from "@/app/actions/services";
+import { AdminPageHeader } from "@/features/admin/components";
 import { listAdminServices } from "@/features/cms/services/queries";
 
 export default async function AdminServicesPage() {

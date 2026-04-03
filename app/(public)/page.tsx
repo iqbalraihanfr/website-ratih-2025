@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 
-import HomeSection from "@/features/marketing/components/home/HomeSection";
-import JasaRatih from "@/features/marketing/components/home/JasaRatih";
-import WhyRatih from "@/features/marketing/components/home/WhyRatih";
-import HomeBg from "@/components/ui/HomeBg"
+import { HomeSection, JasaRatih, WhyRatih } from "@/features/marketing/components/home";
+import HomeBg from "@/components/ui/HomeBg";
 import { createPageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata({
@@ -13,15 +11,13 @@ export const metadata: Metadata = createPageMetadata({
   path: "/",
 });
 
-const page = () => {
+export default function HomePage() {
   return (
     <div className="homepage bg-zinc-950" id="about">
-        <HomeBg />
-        <HomeSection />
-        <WhyRatih />
-        <JasaRatih />
+      <HomeBg />
+      <HomeSection />
+      <WhyRatih />
+      <JasaRatih />
     </div>
-  )
+  );
 }
-
-export default page

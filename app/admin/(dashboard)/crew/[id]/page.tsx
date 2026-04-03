@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
-import { updateTeamMember } from "@/features/cms/crew/actions";
-import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
-import { ItemForm } from "@/features/admin/components/ItemForm";
+import { updateTeamMember } from "@/app/actions/crew";
+import { AdminPageHeader, ItemForm } from "@/features/admin/components";
 import { getAdminTeamMember } from "@/features/cms/crew/queries";
 import { crewFields } from "@/features/cms/shared/forms";
 

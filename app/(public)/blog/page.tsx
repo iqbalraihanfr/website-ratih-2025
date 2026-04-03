@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import BlogContent from "@/features/marketing/components/blog/BlogContent";
+import { BlogContent } from "@/features/marketing/components/blog";
 import { PageHero } from "@/components/ui/PageHero";
 import { createPageMetadata } from "@/lib/site";
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = createPageMetadata({
   noIndex: true,
 });
 
-const page = () => {
+export default function BlogPage() {
   return (
     <div className="mx-auto bg-zinc-950">
       <PageHero
@@ -22,7 +22,5 @@ const page = () => {
       />
       <BlogContent />
     </div>
-  )
+  );
 }
-
-export default page

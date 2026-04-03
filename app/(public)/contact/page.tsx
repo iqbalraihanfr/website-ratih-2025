@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import ContactContent from "@/features/marketing/components/contact/ContactContent";
+import { ContactContent } from "@/features/marketing/components/contact";
 import { PageHero } from "@/components/ui/PageHero";
 import { createPageMetadata } from "@/lib/site";
 
@@ -11,16 +11,11 @@ export const metadata: Metadata = createPageMetadata({
   path: "/contact",
 });
 
-const page = () => {
+export default function ContactPage() {
   return (
-    <div className='mx-auto bg-zinc-950'>
-      <PageHero
-        eyebrow="Mari Terhubung Bersama"
-        title="RATIH CREATIVE"
-      />
+    <div className="mx-auto bg-zinc-950">
+      <PageHero eyebrow="Mari Terhubung Bersama" title="RATIH CREATIVE" />
       <ContactContent />
     </div>
-  )
+  );
 }
-
-export default page

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { deleteTeamMember } from "@/features/cms/crew/actions";
-import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
+import { deleteTeamMember } from "@/app/actions/crew";
+import { AdminPageHeader } from "@/features/admin/components";
 import { listAdminTeamMembers } from "@/features/cms/crew/queries";
 
 export default async function AdminCrewPage() {

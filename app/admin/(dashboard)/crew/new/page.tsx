@@ -1,6 +1,5 @@
-import { createTeamMember } from "@/features/cms/crew/actions";
-import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
-import { ItemForm } from "@/features/admin/components/ItemForm";
+import { createTeamMember } from "@/app/actions/crew";
+import { AdminPageHeader, ItemForm } from "@/features/admin/components";
 import { crewFields } from "@/features/cms/shared/forms";
 
 export default async function NewCrewPage() {

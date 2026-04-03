@@ -1,6 +1,5 @@
-import { createService } from "@/features/cms/services/actions";
-import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
-import { ItemForm } from "@/features/admin/components/ItemForm";
+import { createService } from "@/app/actions/services";
+import { AdminPageHeader, ItemForm } from "@/features/admin/components";
 import { serviceFields } from "@/features/cms/shared/forms";
 
 export default async function NewServicePage() {

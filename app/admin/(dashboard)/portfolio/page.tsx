@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { deletePortfolioItem } from "@/features/cms/portfolio/actions";
-import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
+import { deletePortfolioItem } from "@/app/actions/portfolio";
+import { AdminPageHeader } from "@/features/admin/components";
 import { listAdminPortfolioItems } from "@/features/cms/portfolio/queries";
 
 export default async function AdminPortfolioPage() {

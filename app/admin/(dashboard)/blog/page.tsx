@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { deleteBlogPost } from "@/features/cms/blog/actions";
-import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
+import { deleteBlogPost } from "@/app/actions/blog";
+import { AdminPageHeader } from "@/features/admin/components";
 import { listAdminBlogPosts } from "@/features/cms/blog/queries";
 
 export default async function AdminBlogPage() {
