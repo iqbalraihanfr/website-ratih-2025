@@ -13,7 +13,7 @@ export async function listServices() {
 }
 
 export async function listAdminServices() {
-  const supabase = await createAdminSupabaseClient();
+  const supabase = await createAdminSupabaseClient("services.manage");
   const { data } = await supabase
     .from("services")
     .select("*")
@@ -23,7 +23,7 @@ export async function listAdminServices() {
 }
 
 export async function getAdminService(id: string) {
-  const supabase = await createAdminSupabaseClient();
+  const supabase = await createAdminSupabaseClient("services.manage");
   const { data } = await supabase
     .from("services")
     .select("*")

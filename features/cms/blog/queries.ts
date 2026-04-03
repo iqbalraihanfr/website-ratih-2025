@@ -14,7 +14,7 @@ export async function listPublishedBlogPosts() {
 }
 
 export async function listAdminBlogPosts() {
-  const supabase = await createAdminSupabaseClient();
+  const supabase = await createAdminSupabaseClient("blog.manage");
   const { data } = await supabase
     .from("blog_posts")
     .select("*")
@@ -24,7 +24,7 @@ export async function listAdminBlogPosts() {
 }
 
 export async function getAdminBlogPost(id: string) {
-  const supabase = await createAdminSupabaseClient();
+  const supabase = await createAdminSupabaseClient("blog.manage");
   const { data } = await supabase
     .from("blog_posts")
     .select("*")

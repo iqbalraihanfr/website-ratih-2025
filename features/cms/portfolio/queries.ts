@@ -13,7 +13,7 @@ export async function listPortfolioItems() {
 }
 
 export async function listAdminPortfolioItems() {
-  const supabase = await createAdminSupabaseClient();
+  const supabase = await createAdminSupabaseClient("portfolio.manage");
   const { data } = await supabase
     .from("portfolio_items")
     .select("*")
@@ -23,7 +23,7 @@ export async function listAdminPortfolioItems() {
 }
 
 export async function getAdminPortfolioItem(id: string) {
-  const supabase = await createAdminSupabaseClient();
+  const supabase = await createAdminSupabaseClient("portfolio.manage");
   const { data } = await supabase
     .from("portfolio_items")
     .select("*")

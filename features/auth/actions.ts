@@ -3,30 +3,13 @@
 import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { resolveCmsRole } from "@/features/auth/rbac";
 
 function createAuthClient() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
-}
-
-function getAllowedAdminEmails() {
-  return new Set(
-    (process.env.ADMIN_EMAILS ?? "")
-      .split(",")
-      .map((email) => email.trim().toLowerCase())
-      .filter(Boolean)
-  );
-}
-
-function isAllowedAdminEmail(email: string | undefined) {
-  if (!email) return false;
-  return getAllowedAdminEmails().has(email.toLowerCase());
-}
-
-function isAdminRole(role: unknown) {
-  return role === "admin" || role === "owner";
 }
 
 export async function login(
@@ -47,11 +30,9 @@ export async function login(
   }
 
   const sessionUser = data.session.user;
-  const canAccessAdmin =
-    isAdminRole(sessionUser.app_metadata?.role) ||
-    isAllowedAdminEmail(sessionUser.email);
+  const cmsRole = resolveCmsRole(sessionUser);
 
-  if (!canAccessAdmin) {
+  if (!cmsRole) {
     return "Akun ini belum diizinkan mengakses CMS.";
   }
 

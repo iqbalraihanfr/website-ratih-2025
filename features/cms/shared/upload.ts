@@ -32,7 +32,7 @@ export async function uploadCmsImage(formData: FormData) {
     .toBuffer();
 
   const filename = `${folder}/${crypto.randomUUID()}.webp`;
-  const supabase = await createAdminSupabaseClient();
+  const supabase = await createAdminSupabaseClient("media.upload");
   const { error } = await supabase.storage
     .from("images")
     .upload(filename, webpBuffer, {

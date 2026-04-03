@@ -13,7 +13,7 @@ export async function listTeamMembers() {
 }
 
 export async function listAdminTeamMembers() {
-  const supabase = await createAdminSupabaseClient();
+  const supabase = await createAdminSupabaseClient("crew.manage");
   const { data } = await supabase
     .from("team_members")
     .select("*")
@@ -23,7 +23,7 @@ export async function listAdminTeamMembers() {
 }
 
 export async function getAdminTeamMember(id: string) {
-  const supabase = await createAdminSupabaseClient();
+  const supabase = await createAdminSupabaseClient("crew.manage");
   const { data } = await supabase
     .from("team_members")
     .select("*")

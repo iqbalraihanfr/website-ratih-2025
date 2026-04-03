@@ -1,4 +1,5 @@
 import { createServerClient } from "@/lib/supabase-server";
+import { requirePermission } from "@/features/auth/server";
 
 const statCards = [
   { label: "Blog Posts", table: "blog_posts", icon: "ri-article-line" },
@@ -8,6 +9,7 @@ const statCards = [
 ] as const;
 
 export default async function AdminDashboard() {
+  await requirePermission("dashboard.view");
   const supabase = createServerClient();
 
   const counts = await Promise.all(
