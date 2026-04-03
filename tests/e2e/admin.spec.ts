@@ -8,7 +8,7 @@ import {
 
 const uploadFixturePath = path.join(
   process.cwd(),
-  "public/images/portfolio/promosi-umkm.png"
+  "tests/fixtures/upload-test.png"
 );
 const CMS_TEST_PASSWORD = "ratih-admin-test-password";
 
