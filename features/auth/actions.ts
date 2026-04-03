@@ -4,6 +4,13 @@ import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { resolveCmsRole } from "@/features/auth/rbac";
+import {
+  CMS_TEST_EMAIL_COOKIE,
+  CMS_TEST_PASSWORD,
+  CMS_TEST_ROLE_COOKIE,
+  getCmsTestRoleFromEmail,
+  isCmsTestMode,
+} from "@/lib/cms-test-mode";
 
 function createAuthClient() {
   return createClient(
@@ -18,6 +25,33 @@ export async function login(
 ): Promise<string | null> {
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
+
+  if (isCmsTestMode()) {
+    const testRole = getCmsTestRoleFromEmail(email);
+
+    if (!testRole || password !== CMS_TEST_PASSWORD) {
+      return "Email atau password tidak valid.";
+    }
+
+    const cookieStore = await cookies();
+    cookieStore.set(CMS_TEST_ROLE_COOKIE, testRole, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+      maxAge: 60 * 60,
+      path: "/",
+    });
+    cookieStore.set(CMS_TEST_EMAIL_COOKIE, email.toLowerCase(), {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+      maxAge: 60 * 60,
+      path: "/",
+    });
+
+    redirect("/admin");
+  }
+
   const supabase = createAuthClient();
 
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -58,6 +92,8 @@ export async function login(
 
 export async function logout() {
   const cookieStore = await cookies();
+  cookieStore.delete(CMS_TEST_ROLE_COOKIE);
+  cookieStore.delete(CMS_TEST_EMAIL_COOKIE);
   cookieStore.delete("sb-access-token");
   cookieStore.delete("sb-refresh-token");
   redirect("/admin/login");

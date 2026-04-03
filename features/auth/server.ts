@@ -8,6 +8,11 @@ import {
   type CmsPermission,
   type CmsRole,
 } from "@/features/auth/rbac";
+import {
+  CMS_TEST_EMAIL_COOKIE,
+  CMS_TEST_ROLE_COOKIE,
+  isCmsTestMode,
+} from "@/lib/cms-test-mode";
 
 function createAuthClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -20,7 +25,62 @@ function createAuthClient() {
   return createClient(url, key);
 }
 
+function isCmsRole(value: string | undefined): value is CmsRole {
+  return (
+    value === "owner" ||
+    value === "admin" ||
+    value === "editor" ||
+    value === "viewer"
+  );
+}
+
+function createTestSessionContext(role: CmsRole, email: string): CmsSessionContext {
+  const user = {
+    id: `cms-test-${role}`,
+    email,
+    aud: "authenticated",
+    role: "authenticated",
+    created_at: new Date().toISOString(),
+    app_metadata: {
+      role,
+    },
+    user_metadata: {},
+  } as User;
+
+  const session = {
+    access_token: `cms-test-access-${role}`,
+    refresh_token: `cms-test-refresh-${role}`,
+    token_type: "bearer",
+    expires_in: 60 * 60,
+    expires_at: Math.floor(Date.now() / 1000) + 60 * 60,
+    user,
+  } as Session;
+
+  return {
+    session,
+    user,
+    role,
+    permissions: getPermissionsForRole(role),
+  };
+}
+
+async function getTestCmsSessionContext(): Promise<CmsSessionContext | null> {
+  const cookieStore = await cookies();
+  const role = cookieStore.get(CMS_TEST_ROLE_COOKIE)?.value;
+
+  if (!isCmsRole(role)) return null;
+
+  const email =
+    cookieStore.get(CMS_TEST_EMAIL_COOKIE)?.value ?? `${role}@ratih.test`;
+
+  return createTestSessionContext(role, email);
+}
+
 export async function getSession(): Promise<Session | null> {
+  if (isCmsTestMode()) {
+    return (await getTestCmsSessionContext())?.session ?? null;
+  }
+
   const cookieStore = await cookies();
   const accessToken = cookieStore.get("sb-access-token")?.value;
   const refreshToken = cookieStore.get("sb-refresh-token")?.value;
@@ -45,6 +105,10 @@ export interface CmsSessionContext {
 }
 
 export async function getCmsSessionContext(): Promise<CmsSessionContext | null> {
+  if (isCmsTestMode()) {
+    return getTestCmsSessionContext();
+  }
+
   const session = await getSession();
   if (!session?.user) return null;
 
