@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import "remixicon/fonts/remixicon.css";
 import "./globals.css";
@@ -79,9 +77,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

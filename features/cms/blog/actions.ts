@@ -52,6 +52,19 @@ export async function updateBlogPost(
   const cover_image_path = String(formData.get("cover_image_path") ?? "");
   const is_published = formData.get("is_published") === "true";
 
+  const { data: existing } = await supabase
+    .from("blog_posts")
+    .select("published_at, is_published")
+    .eq("id", id)
+    .single();
+
+  let published_at: string | null = existing?.published_at ?? null;
+  if (is_published && !existing?.is_published) {
+    published_at = new Date().toISOString();
+  } else if (!is_published) {
+    published_at = null;
+  }
+
   const { error } = await supabase
     .from("blog_posts")
     .update({
@@ -62,7 +75,7 @@ export async function updateBlogPost(
       author,
       cover_image_path,
       is_published,
-      published_at: is_published ? new Date().toISOString() : null,
+      published_at,
       updated_at: new Date().toISOString(),
     })
     .eq("id", id);

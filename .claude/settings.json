@@ -29,7 +29,16 @@
       "Bash(node -e \"const v=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(''''/dev/stdin'''',''''utf8''''\\)\\); const all=v.filter\\(x=>x.startsWith\\(''''15.''''\\)||x.startsWith\\(''''16.''''\\)\\).slice\\(-10\\); console.log\\(all.join\\(''''\\\\n''''\\)\\)\")",
       "Bash(pnpm audit:*)",
       "Bash(/Users/iqbalrei/Projects/website-ratih-2025/node_modules/.bin/tsc --noEmit)",
-      "Bash(echo \"EXIT=$?\")"
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(mkdir -p /Users/iqbalrei/Projects/website-ratih-2025/app/\\\\\\(public\\\\\\))",
+      "Bash(mv /Users/iqbalrei/Projects/website-ratih-2025/app/page.tsx /Users/iqbalrei/Projects/website-ratih-2025/app/\\\\\\(public\\\\\\)/page.tsx)",
+      "Bash(mv /Users/iqbalrei/Projects/website-ratih-2025/app/about /Users/iqbalrei/Projects/website-ratih-2025/app/\\\\\\(public\\\\\\)/about)",
+      "Bash(mv /Users/iqbalrei/Projects/website-ratih-2025/app/blog /Users/iqbalrei/Projects/website-ratih-2025/app/\\\\\\(public\\\\\\)/blog)",
+      "Bash(mv /Users/iqbalrei/Projects/website-ratih-2025/app/contact /Users/iqbalrei/Projects/website-ratih-2025/app/\\\\\\(public\\\\\\)/contact)",
+      "Bash(sed -i '' 's|from \"@/app/actions/blog\"|from \"@/features/cms/blog/actions\"|g' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/blog/page.tsx' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/blog/new/page.tsx' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/blog/[id]/page.tsx')",
+      "Bash(sed -i '' 's|from \"@/app/actions/crew\"|from \"@/features/cms/crew/actions\"|g' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/crew/page.tsx' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/crew/new/page.tsx' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/crew/[id]/page.tsx')",
+      "Bash(sed -i '' 's|from \"@/app/actions/portfolio\"|from \"@/features/cms/portfolio/actions\"|g' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/portfolio/page.tsx' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/portfolio/new/page.tsx' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/portfolio/[id]/page.tsx')",
+      "Bash(sed -i '' 's|from \"@/app/actions/services\"|from \"@/features/cms/services/actions\"|g' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/services/page.tsx' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/services/new/page.tsx' '/Users/iqbalrei/Projects/website-ratih-2025/app/admin/\\(dashboard\\)/services/[id]/page.tsx')"
     ],
     "additionalDirectories": [
       "/Users/iqbalrei/Projects/website-ratih-2025/app/admin/blog",

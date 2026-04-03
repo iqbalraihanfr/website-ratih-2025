@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { deleteBlogPost } from "@/app/actions/blog";
+import { deleteBlogPost } from "@/features/cms/blog/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { listAdminBlogPosts } from "@/features/cms/blog/queries";
 

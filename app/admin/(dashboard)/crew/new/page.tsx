@@ -1,4 +1,4 @@
-import { createTeamMember } from "@/app/actions/crew";
+import { createTeamMember } from "@/features/cms/crew/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { ItemForm } from "@/features/admin/components/ItemForm";
 import { crewFields } from "@/features/cms/shared/forms";

@@ -1,4 +1,4 @@
-import { createService } from "@/app/actions/services";
+import { createService } from "@/features/cms/services/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { ItemForm } from "@/features/admin/components/ItemForm";
 import { serviceFields } from "@/features/cms/shared/forms";

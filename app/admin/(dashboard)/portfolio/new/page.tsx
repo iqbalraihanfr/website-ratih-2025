@@ -1,4 +1,4 @@
-import { createPortfolioItem } from "@/app/actions/portfolio";
+import { createPortfolioItem } from "@/features/cms/portfolio/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { ItemForm } from "@/features/admin/components/ItemForm";
 import { portfolioFields } from "@/features/cms/shared/forms";

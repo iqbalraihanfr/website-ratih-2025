@@ -1,5 +1,5 @@
 import AllAboutRatih from "@/features/marketing/components/about/AllAboutRatih";
-import RATIH from "@/features/marketing/components/about/RATIH";
+import RATIH from "@/features/marketing/components/about/RatihValues";
 import RatihCrew from "@/features/marketing/components/about/RatihCrew";
 
 const AboutContent = () => {

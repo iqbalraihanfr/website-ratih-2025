@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { uploadImage } from "@/app/actions/upload";
+import { uploadCmsImage } from "@/features/cms/shared/upload";
 import { storageUrl } from "@/lib/storage";
 
 interface Props {
@@ -45,7 +45,7 @@ export function ImageUploader({ folder, onUploaded, currentPath }: Props) {
     formData.set("file", file);
     formData.set("folder", folder);
 
-    const result = await uploadImage(formData);
+    const result = await uploadCmsImage(formData);
 
     setUploading(false);
 

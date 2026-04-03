@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { updatePortfolioItem } from "@/app/actions/portfolio";
+import { updatePortfolioItem } from "@/features/cms/portfolio/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { ItemForm } from "@/features/admin/components/ItemForm";
 import { getAdminPortfolioItem } from "@/features/cms/portfolio/queries";

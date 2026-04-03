@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { deletePortfolioItem } from "@/app/actions/portfolio";
+import { deletePortfolioItem } from "@/features/cms/portfolio/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { listAdminPortfolioItems } from "@/features/cms/portfolio/queries";
 

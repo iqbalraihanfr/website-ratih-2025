@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { deleteTeamMember } from "@/app/actions/crew";
+import { deleteTeamMember } from "@/features/cms/crew/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { listAdminTeamMembers } from "@/features/cms/crew/queries";
 

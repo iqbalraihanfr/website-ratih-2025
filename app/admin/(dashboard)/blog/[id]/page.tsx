@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { updateBlogPost } from "@/app/actions/blog";
+import { updateBlogPost } from "@/features/cms/blog/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { BlogPostForm } from "@/features/admin/components/BlogPostForm";
 import { getAdminBlogPost } from "@/features/cms/blog/queries";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { login } from "@/app/actions/auth";
+import { login } from "@/features/auth/actions";
 
 export default function AdminLoginPage() {
   const [error, action, pending] = useActionState(login, null);

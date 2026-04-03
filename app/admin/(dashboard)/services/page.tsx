@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { deleteService } from "@/app/actions/services";
+import { deleteService } from "@/features/cms/services/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { listAdminServices } from "@/features/cms/services/queries";
 

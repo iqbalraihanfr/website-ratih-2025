@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { updateService } from "@/app/actions/services";
+import { updateService } from "@/features/cms/services/actions";
 import { AdminPageHeader } from "@/features/admin/components/AdminPageHeader";
 import { ItemForm } from "@/features/admin/components/ItemForm";
 import { getAdminService } from "@/features/cms/services/queries";
