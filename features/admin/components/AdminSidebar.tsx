@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { logout } from "@/features/auth/actions";
 import type { CmsPermission, CmsRole } from "@/features/auth/rbac";
+import { siteConfig } from "@/lib/site";
 
 const navItems: Array<{
   label: string;
@@ -46,20 +48,36 @@ const navItems: Array<{
 interface AdminSidebarProps {
   permissions: CmsPermission[];
   role: CmsRole;
+  className?: string;
+  onNavigate?: () => void;
 }
 
-export function AdminSidebar({ permissions, role }: AdminSidebarProps) {
+export function AdminSidebar({
+  permissions,
+  role,
+  className,
+  onNavigate,
+}: AdminSidebarProps) {
   const pathname = usePathname();
   const availableItems = navItems.filter((item) =>
     permissions.includes(item.permission)
   );
 
   return (
-    <aside className="w-64 bg-zinc-900 min-h-screen flex flex-col flex-shrink-0">
-      <div className="p-6">
-        <span className="text-white font-bold text-lg">Ratih CMS</span>
+    <aside className={`flex min-h-full w-64 shrink-0 flex-col bg-zinc-900 ${className ?? ""}`}>
+      <div className="p-5 sm:p-6">
+        <Image
+          src={siteConfig.logoHorizontalPath}
+          alt="Logo Ratih Creative"
+          width={160}
+          height={45}
+          priority
+          quality={90}
+          sizes="160px"
+          className="h-auto w-[150px] max-w-full object-contain sm:w-[160px]"
+        />
         <p className="mt-1 text-xs uppercase tracking-wide text-zinc-500">
-          Role: {role}
+          Ratih CMS • Role: {role}
         </p>
       </div>
 
@@ -73,6 +91,7 @@ export function AdminSidebar({ permissions, role }: AdminSidebarProps) {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onNavigate}
               className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                 isActive
                   ? "bg-zinc-800 text-white"

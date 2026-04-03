@@ -11,7 +11,7 @@ export default async function AdminDashboard() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-white mb-8">Dashboard</h1>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {adminDashboardCards.map(({ label, icon }, i) => (
           <div
             key={label}

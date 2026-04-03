@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export const alt = "Ratih Creative Media";
 export const size = {
@@ -29,14 +29,31 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: "flex",
-            gap: "12px",
-            fontSize: 24,
-            letterSpacing: "0.35em",
-            textTransform: "uppercase",
-            color: "#facc15",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
           }}
         >
-          Creative Agency
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+              fontSize: 24,
+              letterSpacing: "0.35em",
+              textTransform: "uppercase",
+              color: "#facc15",
+            }}
+          >
+            Creative Agency
+          </div>
+          <img
+            src={absoluteUrl(siteConfig.logoHorizontalPath)}
+            alt="Logo Ratih Creative"
+            width={300}
+            height={84}
+            style={{
+              objectFit: "contain",
+            }}
+          />
         </div>
         <div
           style={{

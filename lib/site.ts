@@ -12,6 +12,11 @@ export const siteConfig = {
   phoneDisplay: "+62 81234567890",
   phoneLink: "6281234567890",
   baseUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  logoSquarePath: "/logo-ratih.png",
+  logoHorizontalPath: "/logo-horizontal-warna.png",
+  faviconPath: "/favicon.ico",
+  iconPath: "/icon.png",
+  appleIconPath: "/apple-icon.png",
   keywords: [
     "Ratih Creative",
     "creative agency Madiun",

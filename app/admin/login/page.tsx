@@ -1,14 +1,28 @@
 "use client";
 
+import Image from "next/image";
 import { useActionState } from "react";
 import { login } from "@/features/auth/actions";
+import { siteConfig } from "@/lib/site";
 
 export default function AdminLoginPage() {
   const [error, action, pending] = useActionState(login, null);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-950">
-      <div className="w-full max-w-sm rounded-lg border border-zinc-800 bg-zinc-900 p-8">
+    <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4 py-10 sm:px-6">
+      <div className="w-full max-w-sm rounded-lg border border-zinc-800 bg-zinc-900 p-6 sm:p-8">
+        <div className="mb-6 flex justify-center">
+          <Image
+            src={siteConfig.logoHorizontalPath}
+            alt="Logo Ratih Creative"
+            width={220}
+            height={62}
+            priority
+            quality={90}
+            sizes="(max-width: 640px) 180px, 220px"
+            className="h-auto w-[180px] max-w-full object-contain sm:w-[220px]"
+          />
+        </div>
         <h1 className="mb-6 text-center text-2xl font-bold text-white">
           Admin Login
         </h1>

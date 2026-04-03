@@ -3,7 +3,6 @@ import Image from "next/image"
 import Link from 'next/link'
 import { headerData } from '@/constants'
 import { useState, useEffect } from 'react'
-import { storageUrl } from '@/lib/storage'
 import { X, Menu } from 'lucide-react'
 import DesktopMenu from './DesktopMenu'
 import MobileMenu from './MobileMenu'
@@ -30,13 +29,13 @@ const Header = () => {
     
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 md:justify-center md:gap-15 py-5 transition-all duration-300 ${
+      <header className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-4 transition-all duration-300 md:justify-center md:gap-8 md:px-6 md:py-5 lg:gap-15 ${
         isScrolled 
           ? 'bg-black/80 backdrop-blur' 
           : 'bg-transparent'
       }`}>
         <button
-          className='md:hidden z-50'
+          className='z-50 inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm transition hover:bg-black/35 md:hidden'
           onClick={() => setSidebarOpen(!sidebarOpen)}
           aria-label="Toggle menu"
           aria-expanded={sidebarOpen}
@@ -56,16 +55,18 @@ const Header = () => {
           <Link
             href={logoItem?.href}
             className='md:hidden'
+            aria-label="Kembali ke beranda"
           >
             <Image
-              src={storageUrl(logoItem.logoURL!)}
+              src={logoItem.compactLogoURL ?? logoItem.logoURL!}
               alt={logoItem.altText ?? 'Ratih Creative Logo'}
               width={40}
               height={40}
-              style={{
-                maxWidth: "100%",
-                height: "auto"
-              }} />
+              priority
+              quality={90}
+              sizes="40px"
+              className="h-10 w-10 object-contain"
+            />
           </Link>
         )}
       </header>

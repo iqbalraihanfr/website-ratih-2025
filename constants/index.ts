@@ -6,6 +6,7 @@ export type NavigationItem = {
   href: string;
   isLogo?: boolean;
   logoURL?: string;
+  compactLogoURL?: string;
   altText?: string;
 };
 
@@ -24,7 +25,8 @@ export const headerData: NavigationItem[] = [
     title: "Logo",
     href: "/",
     isLogo: true,
-    logoURL: "logo-ratih.svg",
+    logoURL: siteConfig.logoHorizontalPath,
+    compactLogoURL: siteConfig.logoSquarePath,
     altText: "Logo Ratih Creative",
   },
   { id: "contact", title: "Contact", href: "/contact" },

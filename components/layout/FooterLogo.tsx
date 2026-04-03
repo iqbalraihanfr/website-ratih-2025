@@ -1,22 +1,22 @@
 import Image from "next/image"
-import { storageUrl } from "@/lib/storage"
+import { siteConfig } from "@/lib/site"
 
 const FooterLogo = () => {
   return (
-    <div className="flex flex-row gap-4 items-center mb-10">
+    <div className="mb-10 flex max-w-xs flex-col items-start gap-4">
       <Image
-        src={storageUrl("logo-ratih.svg")}
+        src={siteConfig.logoHorizontalPath}
         alt={"Logo Ratih"}
-        width={50}
-        height={50}
-        style={{
-          maxWidth: "100%",
-          height: "auto"
-        }} />
-      <span className="text-lg font-bold italic">
-      RATIH CREATIVE MEDIA
-      <p className="text-xs font-normal not-italic">Partner Kreatif Projectmu!</p>
-      </span>
+        width={188}
+        height={53}
+        quality={90}
+        sizes="(max-width: 768px) 160px, 188px"
+        className="h-auto w-[160px] object-contain md:w-[188px]"
+      />
+      <div>
+        <p className="text-lg font-bold italic">RATIH CREATIVE MEDIA</p>
+        <p className="text-xs font-normal not-italic">Partner Kreatif Projectmu!</p>
+      </div>
     </div>
   );
 }

@@ -18,6 +18,14 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
+  icons: {
+    icon: [
+      { url: siteConfig.faviconPath, sizes: "any" },
+      { url: siteConfig.iconPath, type: "image/png" },
+    ],
+    apple: [{ url: siteConfig.appleIconPath, type: "image/png" }],
+    shortcut: [siteConfig.faviconPath],
+  },
   alternates: {
     canonical: "/",
   },

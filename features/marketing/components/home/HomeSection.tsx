@@ -1,27 +1,26 @@
 import Image from "next/image"
 import Link from "next/link"
-import { storageUrl } from "@/lib/storage"
+import { siteConfig } from "@/lib/site"
 
 const HomeSection = () => {
   return (
-    <div className='pt-60 flex flex-col items-center relative min-h-screen'>
-      <Link href={"/about"}>
+    <div className='relative flex min-h-screen flex-col items-center px-4 pt-52 sm:px-6 sm:pt-56 md:pt-60'>
+      <Link href={"/about"} aria-label="Lihat profil Ratih Creative">
         <Image
-          src={storageUrl("logo-ratih-2.svg")}
+          src={siteConfig.logoHorizontalPath}
           alt={"Logo Ratih"}
-          width={80}
-          height={0}
-          className="mb-5 scale-85 md:scale-100 transition-all"
-          style={{
-            maxWidth: "100%",
-            height: "auto"
-          }}>
-        </Image>
+          width={280}
+          height={79}
+          priority
+          quality={90}
+          sizes="(max-width: 640px) 180px, (max-width: 1024px) 220px, 280px"
+          className="mb-5 h-auto w-[180px] object-contain transition-all sm:w-[220px] md:w-[280px]"
+        />
       </Link>
-      <h1 className="text-center md:text-6xl font-bold italic text-3xl transition-all">
+      <h1 className="text-center text-3xl font-bold italic transition-all md:text-6xl">
         RATIH CREATIVE MEDIA
       </h1>
-      <span className="md:text-base text-xs mt-3 font-semibold transition-all">
+      <span className="mt-3 max-w-xs text-center text-xs font-semibold transition-all sm:max-w-md md:text-base">
         A Digital Creative Agency Based On Madiun.
       </span>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -1,20 +1,18 @@
 import Image from "next/image"
-import { storageUrl } from "@/lib/storage"
+import { siteConfig } from "@/lib/site"
 
 const LogoRatih = () => {
   return (
     <div className='mx-10 lg:flex lg:flex-row flex flex-col items-center'>
       <Image
-        src={storageUrl('logo-ratih.svg')}
+        src={siteConfig.logoHorizontalPath}
         alt={'Logo Ratih'}
-        width={250}
-        height={40}
-        className='scale-80 lg:scale-100'
-        style={{
-          maxWidth: "100%",
-          height: "auto"
-        }}>
-      </Image>
+        width={220}
+        height={62}
+        quality={90}
+        sizes="(max-width: 768px) 180px, 220px"
+        className='h-auto w-[180px] scale-90 object-contain lg:w-[220px] lg:scale-100'
+      />
     </div>
   );
 }
