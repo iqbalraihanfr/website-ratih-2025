@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { deleteService } from "@/app/actions/services";
 import { AdminPageHeader } from "@/features/admin/components";
+import { requirePermission } from "@/features/auth/server";
 import { listAdminServices } from "@/features/cms/services/queries";
 
 export default async function AdminServicesPage() {
+  await requirePermission("services.manage");
   const services = await listAdminServices();
 
   return (
@@ -44,6 +46,8 @@ export default async function AdminServicesPage() {
                     <div className="flex items-center gap-2 justify-end">
                       <Link
                         href={`/admin/services/${service.id}`}
+                        aria-label={`Edit layanan ${service.title}`}
+                        title={`Edit layanan ${service.title}`}
                         className="text-zinc-400 hover:text-white transition-colors"
                       >
                         <i className="ri-edit-line text-lg" />
@@ -56,6 +60,8 @@ export default async function AdminServicesPage() {
                       >
                         <button
                           type="submit"
+                          aria-label={`Hapus layanan ${service.title}`}
+                          title={`Hapus layanan ${service.title}`}
                           className="text-zinc-400 hover:text-red-400 transition-colors"
                         >
                           <i className="ri-delete-bin-line text-lg" />

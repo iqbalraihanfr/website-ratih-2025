@@ -1,9 +1,12 @@
 "use server";
 
-import sharp from "sharp";
+import { isCmsTestMode } from "@/lib/cms-test-mode";
 import { createAdminSupabaseClient } from "@/features/cms/shared/admin";
+import {
+  MAX_UPLOAD_SIZE,
+  optimizeCmsImageBuffer,
+} from "@/features/cms/shared/image-optimizer";
 
-const MAX_UPLOAD_SIZE = 5 * 1024 * 1024;
 const ALLOWED_FOLDERS = new Set(["blog", "portfolio", "crew", "services"]);
 const ALLOWED_FILE_TYPES = new Set([
   "image/jpeg",
@@ -26,17 +29,19 @@ export async function uploadCmsImage(formData: FormData) {
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
-  const webpBuffer = await sharp(buffer)
-    .resize(1920, 1920, { fit: "inside", withoutEnlargement: true })
-    .webp({ quality: 85 })
-    .toBuffer();
+  const optimizedImage = await optimizeCmsImageBuffer(buffer);
 
-  const filename = `${folder}/${crypto.randomUUID()}.webp`;
+  const filename = `${folder}/${crypto.randomUUID()}.${optimizedImage.extension}`;
+
+  if (isCmsTestMode()) {
+    return { path: filename };
+  }
+
   const supabase = await createAdminSupabaseClient("media.upload");
   const { error } = await supabase.storage
     .from("images")
-    .upload(filename, webpBuffer, {
-      contentType: "image/webp",
+    .upload(filename, optimizedImage.buffer, {
+      contentType: optimizedImage.contentType,
       upsert: false,
     });
 

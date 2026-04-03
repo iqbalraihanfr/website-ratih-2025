@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { updateService } from "@/app/actions/services";
 import { AdminPageHeader, ItemForm } from "@/features/admin/components";
+import { requirePermission } from "@/features/auth/server";
 import { getAdminService } from "@/features/cms/services/queries";
 import { serviceFields } from "@/features/cms/shared/forms";
 
@@ -9,6 +10,7 @@ export default async function EditServicePage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  await requirePermission("services.manage");
   const { id } = await params;
   const service = await getAdminService(id);
 

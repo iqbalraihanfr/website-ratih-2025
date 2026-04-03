@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { deleteTeamMember } from "@/app/actions/crew";
 import { AdminPageHeader } from "@/features/admin/components";
+import { requirePermission } from "@/features/auth/server";
 import { listAdminTeamMembers } from "@/features/cms/crew/queries";
 
 export default async function AdminCrewPage() {
+  await requirePermission("crew.manage");
   const members = await listAdminTeamMembers();
 
   return (
@@ -48,6 +50,8 @@ export default async function AdminCrewPage() {
                     <div className="flex items-center gap-2 justify-end">
                       <Link
                         href={`/admin/crew/${member.id}`}
+                        aria-label={`Edit anggota tim ${member.name}`}
+                        title={`Edit anggota tim ${member.name}`}
                         className="text-zinc-400 hover:text-white transition-colors"
                       >
                         <i className="ri-edit-line text-lg" />
@@ -60,6 +64,8 @@ export default async function AdminCrewPage() {
                       >
                         <button
                           type="submit"
+                          aria-label={`Hapus anggota tim ${member.name}`}
+                          title={`Hapus anggota tim ${member.name}`}
                           className="text-zinc-400 hover:text-red-400 transition-colors"
                         >
                           <i className="ri-delete-bin-line text-lg" />

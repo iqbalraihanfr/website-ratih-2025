@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { updatePortfolioItem } from "@/app/actions/portfolio";
 import { AdminPageHeader, ItemForm } from "@/features/admin/components";
+import { requirePermission } from "@/features/auth/server";
 import { getAdminPortfolioItem } from "@/features/cms/portfolio/queries";
 import { portfolioFields } from "@/features/cms/shared/forms";
 
@@ -9,6 +10,7 @@ export default async function EditPortfolioPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  await requirePermission("portfolio.manage");
   const { id } = await params;
   const item = await getAdminPortfolioItem(id);
 

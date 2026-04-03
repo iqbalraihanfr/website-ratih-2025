@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { deletePortfolioItem } from "@/app/actions/portfolio";
 import { AdminPageHeader } from "@/features/admin/components";
+import { requirePermission } from "@/features/auth/server";
 import { listAdminPortfolioItems } from "@/features/cms/portfolio/queries";
 
 export default async function AdminPortfolioPage() {
+  await requirePermission("portfolio.manage");
   const items = await listAdminPortfolioItems();
 
   return (
@@ -48,6 +50,8 @@ export default async function AdminPortfolioPage() {
                     <div className="flex items-center gap-2 justify-end">
                       <Link
                         href={`/admin/portfolio/${item.id}`}
+                        aria-label={`Edit portfolio ${item.title}`}
+                        title={`Edit portfolio ${item.title}`}
                         className="text-zinc-400 hover:text-white transition-colors"
                       >
                         <i className="ri-edit-line text-lg" />
@@ -60,6 +64,8 @@ export default async function AdminPortfolioPage() {
                       >
                         <button
                           type="submit"
+                          aria-label={`Hapus portfolio ${item.title}`}
+                          title={`Hapus portfolio ${item.title}`}
                           className="text-zinc-400 hover:text-red-400 transition-colors"
                         >
                           <i className="ri-delete-bin-line text-lg" />

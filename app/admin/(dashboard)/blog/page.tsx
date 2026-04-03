@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { deleteBlogPost } from "@/app/actions/blog";
 import { AdminPageHeader } from "@/features/admin/components";
+import { requirePermission } from "@/features/auth/server";
 import { listAdminBlogPosts } from "@/features/cms/blog/queries";
 
 export default async function AdminBlogPage() {
+  await requirePermission("blog.manage");
   const posts = await listAdminBlogPosts();
 
   return (
@@ -56,6 +58,8 @@ export default async function AdminBlogPage() {
                     <div className="flex items-center gap-2 justify-end">
                       <Link
                         href={`/admin/blog/${post.id}`}
+                        aria-label={`Edit blog post ${post.title}`}
+                        title={`Edit blog post ${post.title}`}
                         className="text-zinc-400 hover:text-white transition-colors"
                       >
                         <i className="ri-edit-line text-lg" />
@@ -68,6 +72,8 @@ export default async function AdminBlogPage() {
                       >
                         <button
                           type="submit"
+                          aria-label={`Hapus blog post ${post.title}`}
+                          title={`Hapus blog post ${post.title}`}
                           className="text-zinc-400 hover:text-red-400 transition-colors"
                         >
                           <i className="ri-delete-bin-line text-lg" />

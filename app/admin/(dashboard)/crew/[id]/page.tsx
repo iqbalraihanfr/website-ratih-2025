@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { updateTeamMember } from "@/app/actions/crew";
 import { AdminPageHeader, ItemForm } from "@/features/admin/components";
+import { requirePermission } from "@/features/auth/server";
 import { getAdminTeamMember } from "@/features/cms/crew/queries";
 import { crewFields } from "@/features/cms/shared/forms";
 
@@ -9,6 +10,7 @@ export default async function EditCrewPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  await requirePermission("crew.manage");
   const { id } = await params;
   const member = await getAdminTeamMember(id);
 
