@@ -1,44 +1,123 @@
-import SocialMedia from "./SocialMedia"
+"use client";
+import { useState } from "react";
+import StalkRail from "./StalkRail";
 
 const ContactContent = () => {
-  return (
-    <div className="container mx-auto pb-10 mt-20 transition-all">
-      <div className="flex flex-col lg:flex-row gap-4 lg:mx-20 mx-10">
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [feedback, setFeedback] = useState<string | null>(null);
 
-        {/* Hubungi Kami */}
-        <div className="md:w-1/3 w-full mb-10">
-          <h1 className="font-bold uppercase text-2xl italic">Hubungi Kami</h1>
-          <div className="mt-10 flex flex-col gap-10 mb-10">  
-            <span className="font-bold uppercase italic text-lg">Email
-              <p className="font-light lowercase text-lg not-italic">Loremipsum@gmail.com.</p>
-            </span>
-            <span className="font-bold uppercase italic text-lg">WhatsApp
-              <p className="font-light lowercase text-lg not-italic">+62 856123456768</p>
-            </span>
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Project Inquiry — ${name}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+    window.location.href = `mailto:ratihcreative@gmail.com?subject=${subject}&body=${body}`;
+    setFeedback("Aplikasi emailmu akan terbuka dengan draft pesan yang sudah terisi.");
+  };
+
+  const labelCls = "text-[11px] font-bold italic uppercase tracking-[0.15em] text-white/55 mb-2";
+  const inputCls =
+    "bg-transparent border-0 border-b border-white/25 py-3 text-lg text-white outline-none transition-colors focus:border-yellow-500";
+
+  return (
+    <section className="bg-black px-6 lg:px-20 pt-16 pb-28">
+      <div className="mx-auto grid max-w-[1280px] gap-14 lg:gap-20 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-start">
+        <div className="flex flex-col gap-10">
+          <div className="inline-flex items-center gap-3 text-[11px] font-bold italic uppercase tracking-[0.25em] text-white/55">
+            <span className="h-px w-7 bg-white/40" /> Get In Touch
           </div>
-          <h1 className="font-bold uppercase text-xl italic">Social Media Kami</h1>
-          <SocialMedia />
+          <h2 className="text-4xl md:text-5xl font-bold italic uppercase leading-[0.95]">
+            Ada Project?
+            <br />
+            <span className="text-yellow-500">Mari Ngobrol.</span>
+          </h2>
+
+          <div className="flex flex-col gap-7">
+            <div>
+              <p className={labelCls}>Email</p>
+              <a href="mailto:ratihcreative@gmail.com" className="text-[22px] font-medium text-white transition-colors hover:text-yellow-500">
+                ratihcreative@gmail.com
+              </a>
+            </div>
+            <div>
+              <p className={labelCls}>WhatsApp</p>
+              <a href="https://wa.me/6281234567890" className="text-[22px] font-medium text-white transition-colors hover:text-yellow-500">
+                +62 812‑3456‑7890
+              </a>
+            </div>
+            <div>
+              <p className={labelCls}>Studio</p>
+              <p className="text-lg">
+                Madiun, Jawa Timur
+                <br />
+                Wilayah kerja: SBY · MLG · MDN
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <StalkRail />
+          </div>
         </div>
 
-        {/* Form */}
-        <form className="flex flex-col w-full gap-3 transition-all">
-          <label htmlFor="name" className="font-semibold italic opacity-70">Nama Anda</label>
-            <input type="text" className="bg-zinc-800 p-4 rounded-md" required/>
-          <label htmlFor="email" className="font-semibold italic opacity-70">Email</label>
-            <input type="text" className="bg-zinc-800 p-4 rounded-md" required/>
-          <label htmlFor="message" className="font-semibold italic opacity-70" >Pesan</label>
-          <textarea 
-            cols={30}
-            rows={5}
-            className="bg-zinc-800 p-4 rounded-md">
-          </textarea>
-          <button className="w-fit bg-zinc-800 px-6 py-2.5 rounded-md mt-4 hover:bg-zinc-600 transition-all cursor-pointer hover:scale-90">
-            <span className="text-sm font-semibold">Kirim Pesan</span>
-          </button>
+        <form onSubmit={submit} className="mt-6 flex flex-col gap-7">
+          <div className="flex flex-col">
+            <label className={labelCls}>Nama / Brand</label>
+            <input
+              className={inputCls}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Siapa kamu?"
+              required
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className={labelCls}>Email</label>
+            <input
+              type="email"
+              className={inputCls}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="kamu@brand.id"
+              required
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className={labelCls}>Ceritakan Project-mu</label>
+            <textarea
+              rows={5}
+              className={`${inputCls} resize-y`}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Brand, jenis project, timeline, referensi…"
+              required
+            />
+          </div>
+          {feedback && <p role="status" className="text-sm text-yellow-500">{feedback}</p>}
+          <div className="mt-2 flex flex-wrap items-center gap-5">
+            <button
+              type="submit"
+              className="inline-flex items-center gap-3.5 bg-transparent text-lg font-bold italic uppercase tracking-wide text-white transition-colors hover:text-yellow-500 cursor-pointer"
+            >
+              Kirim Pesan
+              <span className="inline-flex size-[52px] items-center justify-center rounded-full border border-current">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </span>
+            </button>
+            <a
+              href="https://wa.me/6281234567890"
+              className="text-[13px] text-white/60 underline underline-offset-4 transition-colors hover:text-yellow-500"
+            >
+              Chat WhatsApp langsung →
+            </a>
+          </div>
         </form>
       </div>
-    </div>
-  )
-}
+    </section>
+  );
+};
 
-export default ContactContent
+export default ContactContent;
