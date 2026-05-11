@@ -3,12 +3,12 @@ import Link from 'next/link'
 import Image from "next/image"
 
 interface HeaderItem {
-  id: number
+  id: string
   href: string
   title?: string
-  isLogo: boolean
+  isLogo?: boolean
   logoURL?: string
-  altText: string
+  altText?: string
 }
 
 interface MobileMenuProps {

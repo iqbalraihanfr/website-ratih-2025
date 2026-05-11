@@ -2,12 +2,12 @@ import Link from 'next/link'
 import Image from "next/image"
 
 interface HeaderItem {
-  id: number
+  id: string
   href: string
   title?: string
-  isLogo: boolean
+  isLogo?: boolean
   logoURL?: string
-  altText: string
+  altText?: string
 }
 
 interface DesktopMenuProps {
@@ -26,7 +26,7 @@ const DesktopMenu = ({ headerData }: DesktopMenuProps) => {
           {items.isLogo ? (
             <Image
               src={items.logoURL!}
-              alt={items.altText}
+              alt={items.altText ?? 'Ratih Creative Logo'}
               width={50}
               height={50}
               className='hover:scale-105 transition-all cursor-pointer'
