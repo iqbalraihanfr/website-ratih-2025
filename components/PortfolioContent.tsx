@@ -1,33 +1,39 @@
-import { portfolio } from "@/constants"
-import Image from "next/image"
+import { portfolio } from "@/constants";
+import Image from "next/image";
 
 const PortfolioContent = () => {
   return (
-    <div className="container mx-auto mt-10 grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 xl:gap-4 lg:gap-8 gap-10 lg:px-20 px-10 transition-all">
-      {portfolio.map((items) => (
-      <div key={items.id} className="group relative flex flex-col items-center overflow-hidden rounded-md shadow-lg cursor-pointer">
-        <Image
-          src={items.imgURL}
-          alt={items.title}
-          width={1920}
-          height={1080}
-          loading="lazy"
-          className="rounded-md transition-opacity duration-300 group-hover:opacity-20"
-          sizes="100vw"
-          style={{
-            width: "100%",
-            height: "auto"
-          }} />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <p className="text-white md:text-lg text-sm font-bold text-center uppercase italic">
-              {items.title}
-          </p>
-        </div>
-
+    <section className="bg-black px-6 lg:px-20 pt-20 pb-28">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
+        {portfolio.map((item, i) => {
+          const wide = i % 4 === 0 || i % 4 === 3;
+          return (
+            <article
+              key={item.id}
+              className={`group relative overflow-hidden cursor-pointer ${wide ? "lg:col-span-2" : ""}`}
+              style={{ aspectRatio: wide ? "16 / 9" : "4 / 5" }}
+            >
+              <Image
+                src={item.imgURL}
+                alt={item.title}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:opacity-30"
+              />
+              <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/60 to-transparent transition-colors group-hover:from-black/75">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">
+                  {item.category} · 2025
+                </p>
+                <h3 className="mt-1.5 text-2xl md:text-3xl font-bold italic uppercase leading-none text-white">
+                  {item.title}
+                </h3>
+              </div>
+            </article>
+          );
+        })}
       </div>
-      ))}
-    </div>
+    </section>
   );
-}
+};
 
-export default PortfolioContent
+export default PortfolioContent;
