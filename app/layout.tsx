@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import localFont from 'next/font/local';
 import Footer from "@/components/Footer";
+import ScrollLabel from "@/components/ScrollLabel";
 import "remixicon/fonts/remixicon.css";
 
 const Montserrat = localFont({
@@ -29,6 +30,7 @@ export default function RootLayout({
       <Header />
         {children}
       <Footer />
+      <ScrollLabel />
       </body>
     </html>
   );
