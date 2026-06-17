@@ -1,6 +1,15 @@
 "use client";
-import { useState } from "react";
-import { services } from "@/constants";
+import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase/client";
+
+interface ServiceItem {
+  id: string;
+  title: string;
+  description: string;
+  img_url: string;
+  alt_img: string;
+  sort_order: number;
+}
 
 const tagsFor = (title: string): string[] => {
   const t = title.toLowerCase();
@@ -13,6 +22,37 @@ const tagsFor = (title: string): string[] => {
 
 const JasaRatih = () => {
   const [hover, setHover] = useState<number | null>(null);
+  const [services, setServices] = useState<ServiceItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("services")
+          .select("*")
+          .order("sort_order", { ascending: true });
+        
+        if (error) throw error;
+        setServices(data || []);
+      } catch (err) {
+        console.error("Failed to fetch services:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="bg-black px-6 py-24 lg:px-20 min-h-[300px] flex items-center justify-center">
+        <div className="text-white/40 font-mono text-sm animate-pulse">Memuat layanan...</div>
+      </section>
+    );
+  }
+
   return (
     <section className="bg-black px-6 py-24 lg:px-20">
       <div className="mx-auto max-w-[1280px]">
@@ -50,17 +90,17 @@ const JasaRatih = () => {
                       active ? "text-yellow-500" : "text-white"
                     }`}
                   >
-                    {s.serviceTitle}
+                    {s.title}
                   </h3>
                   <p
                     className="text-sm text-white/55 leading-relaxed max-w-[540px] overflow-hidden transition-all"
                     style={{ maxHeight: active ? 220 : 0, paddingTop: active ? 8 : 0 }}
                   >
-                    {s.serviceDesc}
+                    {s.description}
                   </p>
                 </div>
                 <div className="hidden md:flex flex-wrap gap-1.5">
-                  {tagsFor(s.serviceTitle).map((t) => (
+                  {tagsFor(s.title).map((t) => (
                     <span
                       key={t}
                       className="rounded-full border border-white/20 px-2.5 py-1 text-[10px] uppercase tracking-[0.1em] text-white/70"
@@ -79,3 +119,4 @@ const JasaRatih = () => {
 };
 
 export default JasaRatih;
+

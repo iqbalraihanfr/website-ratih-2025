@@ -120,3 +120,270 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom Dark Theme overrides for React Quill */
+.ql-toolbar.ql-snow {
+  background-color: #0d0d0d !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-top-left-radius: 0.75rem !important;
+  border-top-right-radius: 0.75rem !important;
+}
+
+.ql-container.ql-snow {
+  background-color: #000000 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-bottom-left-radius: 0.75rem !important;
+  border-bottom-right-radius: 0.75rem !important;
+  color: #ffffff !important;
+  font-family: inherit !important;
+  font-size: 0.875rem !important;
+}
+
+.ql-editor {
+  min-height: 180px !important;
+}
+
+.ql-snow .ql-stroke {
+  stroke: rgba(255, 255, 255, 0.7) !important;
+}
+
+.ql-snow .ql-fill {
+  fill: rgba(255, 255, 255, 0.7) !important;
+}
+
+.ql-snow .ql-picker {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.ql-snow .ql-picker-options {
+  background-color: #0d0d0d !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.ql-snow .ql-picker-item {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.ql-snow .ql-picker-item:hover,
+.ql-snow .ql-picker-item.ql-selected {
+  color: #eab308 !important; /* Tailwind yellow-500 */
+}
+
+.ql-snow.ql-toolbar button:hover .ql-stroke,
+.ql-snow.ql-toolbar button.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke {
+  stroke: #eab308 !important;
+}
+
+.ql-snow.ql-toolbar button:hover .ql-fill,
+.ql-snow.ql-toolbar button.ql-active .ql-fill {
+  fill: #eab308 !important;
+}
+
+.rich-text-editor .ql-toolbar {
+  overflow: visible !important;
+}
+
+.rich-text-editor .ql-toolbar button,
+.rich-text-editor .ql-toolbar .ql-picker {
+  position: relative;
+}
+
+.rich-text-editor .ql-toolbar [data-tooltip]::before,
+.rich-text-editor .ql-toolbar [data-tooltip]::after {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%) translateY(4px);
+  transition: opacity 150ms ease, transform 150ms ease;
+  z-index: 50;
+}
+
+.rich-text-editor .ql-toolbar [data-tooltip]::before {
+  content: attr(data-tooltip);
+  bottom: calc(100% + 0.55rem);
+  width: max-content;
+  max-width: 12rem;
+  background: #050505;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  border-radius: 0.5rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  padding: 0.45rem 0.6rem;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+.rich-text-editor .ql-toolbar [data-tooltip]::after {
+  content: "";
+  bottom: calc(100% + 0.28rem);
+  border-left: 0.32rem solid transparent;
+  border-right: 0.32rem solid transparent;
+  border-top: 0.32rem solid rgba(234, 179, 8, 0.35);
+}
+
+.rich-text-editor .ql-toolbar [data-tooltip]:hover::before,
+.rich-text-editor .ql-toolbar [data-tooltip]:hover::after,
+.rich-text-editor .ql-toolbar [data-tooltip]:focus-visible::before,
+.rich-text-editor .ql-toolbar [data-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Rich Content styles for frontend blog post slug page */
+.rich-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.rich-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.rich-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+}
+
+.rich-content ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.rich-content ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.rich-content li {
+  margin-bottom: 0.35rem;
+}
+
+.rich-content strong {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.rich-content a {
+  color: #eab308; /* yellow-500 */
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.rich-content a:hover {
+  color: #ca8a04; /* yellow-600 */
+}
+
+.rich-content blockquote {
+  border-left: 3px solid #eab308;
+  padding-left: 1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Styling for calendar picker in dark theme */
+input[type="datetime-local"] {
+  color-scheme: dark;
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+  opacity: 0.6;
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Styling for Quill Link Tooltip */
+.ql-snow .ql-tooltip {
+  background-color: #0d0d0d !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  padding: 0.75rem 1rem !important;
+  font-family: inherit !important;
+  transform: translateY(10px) !important;
+}
+
+.ql-snow .ql-tooltip::before {
+  color: rgba(255, 255, 255, 0.4) !important;
+  font-size: 0.65rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.5 !important;
+  margin-right: 0.5rem !important;
+}
+
+.ql-snow .ql-tooltip a {
+  color: #eab308 !important; /* Tailwind yellow-500 */
+  font-size: 0.75rem !important;
+}
+
+.ql-snow .ql-tooltip a:hover {
+  color: #ca8a04 !important; /* Tailwind yellow-600 */
+}
+
+.ql-snow .ql-tooltip a.ql-action::after {
+  content: "Edit" !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding-right: 0.5rem !important;
+  margin-right: 0.5rem !important;
+}
+
+.ql-snow .ql-tooltip a.ql-remove::before {
+  content: "Hapus" !important;
+}
+
+.ql-snow .ql-tooltip input[type="text"] {
+  background-color: #000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.5rem !important;
+  color: #fff !important;
+  font-size: 0.75rem !important;
+  padding: 0.4rem 0.6rem !important;
+  outline: none !important;
+  transition: border-color 0.2s !important;
+}
+
+.ql-snow .ql-tooltip input[type="text"]:focus {
+  border-color: #eab308 !important;
+}
+
+.ql-snow .ql-tooltip.ql-editing a.ql-action::after {
+  content: "Simpan" !important;
+  border-right: none !important;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Toast notification shrink animation */
+@keyframes shrink {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+.animate-shrink {
+  animation: shrink 4s linear forwards;
+}

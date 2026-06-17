@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
 import localFont from 'next/font/local';
-import Footer from "@/components/Footer";
-import ScrollLabel from "@/components/ScrollLabel";
 import "remixicon/fonts/remixicon.css";
+import SiteLayout from "@/components/SiteLayout";
 
 const Montserrat = localFont({
   src: 'font/Montserrat.woff2',
@@ -25,13 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${Montserrat.variable} antialiased text-white -pt-20 transition-all`}
+        className={`${Montserrat.variable} antialiased text-white transition-all`}
       >
-      <Header />
-        {children}
-      <Footer />
-      <ScrollLabel />
+        <SiteLayout>
+          {children}
+        </SiteLayout>
       </body>
     </html>
   );
 }
+

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase/client";
 import StalkRail from "./StalkRail";
 
 const ContactContent = () => {
@@ -7,13 +8,41 @@ const ContactContent = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Project Inquiry — ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:ratihcreative@gmail.com?subject=${subject}&body=${body}`;
-    setFeedback("Aplikasi emailmu akan terbuka dengan draft pesan yang sudah terisi.");
+    setSubmitting(true);
+    setFeedback(null);
+
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedMessage = message.trim();
+
+    if (!trimmedName || !trimmedEmail || !trimmedMessage) {
+      setFeedback("Nama, email, dan pesan wajib diisi.");
+      setSubmitting(false);
+      return;
+    }
+
+    const { error } = await supabase.from("contact_messages").insert({
+      name: trimmedName,
+      email: trimmedEmail,
+      message: trimmedMessage,
+    });
+
+    if (error) {
+      console.error("Error submitting contact message:", error);
+      setFeedback("Maaf, pesan belum berhasil terkirim. Coba lagi sebentar lagi ya.");
+      setSubmitting(false);
+      return;
+    }
+
+    setName("");
+    setEmail("");
+    setMessage("");
+    setFeedback("Pesanmu sudah terkirim. Tim Ratih akan meninjau dari dashboard admin.");
+    setSubmitting(false);
   };
 
   const labelCls = "text-[11px] font-bold italic uppercase tracking-[0.15em] text-white/55 mb-2";
@@ -98,9 +127,10 @@ const ContactContent = () => {
           <div className="mt-2 flex flex-wrap items-center gap-5">
             <button
               type="submit"
+              disabled={submitting}
               className="inline-flex items-center gap-3.5 bg-transparent text-lg font-bold italic uppercase tracking-wide text-white transition-colors hover:text-yellow-500 cursor-pointer"
             >
-              Kirim Pesan
+              {submitting ? "Mengirim..." : "Kirim Pesan"}
               <span className="inline-flex size-[52px] items-center justify-center rounded-full border border-current">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M5 12h14M13 5l7 7-7 7" />
