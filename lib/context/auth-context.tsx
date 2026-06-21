@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { 
   User, 
   signInWithPopup, 
@@ -22,11 +22,42 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const cancelledSignInCodes = new Set([
+  "auth/popup-closed-by-user",
+  "auth/cancelled-popup-request",
+  "auth/user-cancelled",
+]);
+
+const popupRecoveryDelayMs = 600;
+const popupFallbackTimeoutMs = 30000;
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(!!auth);
   const [error, setError] = useState<string | null>(null);
+  const signInInProgress = useRef(false);
+  const popupFallbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearPopupFallbackTimer = useCallback(() => {
+    if (popupFallbackTimer.current) {
+      clearTimeout(popupFallbackTimer.current);
+      popupFallbackTimer.current = null;
+    }
+  }, []);
+
+  const recoverCancelledPopup = useCallback(() => {
+    window.setTimeout(() => {
+      if (!signInInProgress.current || auth?.currentUser) {
+        return;
+      }
+
+      signInInProgress.current = false;
+      clearPopupFallbackTimer();
+      setLoading(false);
+      console.info("Google Sign-In dibatalkan: popup ditutup sebelum Firebase memberi respons.");
+    }, popupRecoveryDelayMs);
+  }, [clearPopupFallbackTimer]);
 
   useEffect(() => {
     if (!auth) {
@@ -70,7 +101,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    const handleFocus = () => {
+      recoverCancelledPopup();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        recoverCancelledPopup();
+      }
+    };
+
+    window.addEventListener("focus", handleFocus);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("focus", handleFocus);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      clearPopupFallbackTimer();
+    };
+  }, [clearPopupFallbackTimer, recoverCancelledPopup]);
+
   const loginWithGoogle = async () => {
+    if (signInInProgress.current) {
+      return;
+    }
+
     setLoading(true);
     setError(null);
     if (!auth || !googleProvider) {
@@ -78,20 +134,43 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setLoading(false);
       return;
     }
+
+    const currentAuth = auth;
+    signInInProgress.current = true;
+    popupFallbackTimer.current = setTimeout(() => {
+      if (!signInInProgress.current || currentAuth.currentUser) {
+        return;
+      }
+
+      signInInProgress.current = false;
+      popupFallbackTimer.current = null;
+      setLoading(false);
+      setError("Login Google tidak selesai. Silakan coba lagi.");
+    }, popupFallbackTimeoutMs);
+
+    let signInCompleted = false;
+
     try {
-      await signInWithPopup(auth!, googleProvider!);
+      await signInWithPopup(currentAuth, googleProvider!);
+      signInCompleted = true;
     } catch (err: unknown) {
-      console.error("Google Sign-In Error:", err);
       const firebaseError = err as { code?: string; message?: string };
-      // Friendly message for common errors
-      if (firebaseError.code === "auth/popup-closed-by-user") {
-        setError("Login dibatalkan oleh pengguna.");
+
+      if (firebaseError.code && cancelledSignInCodes.has(firebaseError.code)) {
+        console.info("Google Sign-In dibatalkan:", firebaseError.code);
       } else if (firebaseError.code === "auth/blocked-by-popup-killer") {
+        console.error("Google Sign-In Error:", err);
         setError("Popup login diblokir oleh browser. Harap izinkan popup.");
       } else {
+        console.error("Google Sign-In Error:", err);
         setError(firebaseError.message || "Gagal masuk menggunakan Google.");
       }
-      setLoading(false);
+    } finally {
+      signInInProgress.current = false;
+      clearPopupFallbackTimer();
+      if (!signInCompleted) {
+        setLoading(false);
+      }
     }
   };
 
@@ -113,7 +192,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const clearError = () => setError(null);
+  const clearError = useCallback(() => setError(null), []);
 
   return (
     <AuthContext.Provider 

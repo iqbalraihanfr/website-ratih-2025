@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/auth-context";
 import Image from "next/image";
@@ -21,9 +21,211 @@ export default function AdminLogin() {
     clearError();
   }, [clearError]);
 
+  // Auto-dismiss toast after 5 seconds
+  useEffect(() => {
+    if (error) {
+      const dismissTimer = setTimeout(clearError, 5000);
+
+      return () => {
+        clearTimeout(dismissTimer);
+      };
+    }
+  }, [error, clearError]);
+
+  const dismissToast = useCallback(() => {
+    clearError();
+  }, [clearError]);
+
   return (
     <div className="min-h-screen bg-black flex flex-col items-center justify-center p-6 font-sans">
-      <div className="w-full max-w-md bg-white/[0.03] border border-white/10 rounded-2xl p-8 backdrop-blur-md shadow-2xl relative overflow-hidden">
+      {/* Toast Notification */}
+      {error && (
+        <div
+          key={error}
+          className="toast-notification"
+          style={{
+            position: "fixed",
+            top: "1.5rem",
+            right: "1.5rem",
+            zIndex: 100,
+            maxWidth: "400px",
+            width: "calc(100% - 3rem)",
+            animation: "toast-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+            transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
+          <div
+            style={{
+              background: "linear-gradient(135deg, rgba(30,0,0,0.95), rgba(50,10,10,0.95))",
+              border: "1px solid rgba(239,68,68,0.4)",
+              borderRadius: "1rem",
+              padding: "1rem 1.25rem",
+              backdropFilter: "blur(20px)",
+              boxShadow: "0 20px 60px rgba(239,68,68,0.2), 0 0 40px rgba(239,68,68,0.1)",
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "0.75rem",
+              overflow: "hidden",
+              position: "relative",
+            }}
+          >
+            {/* Red accent line */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "3px",
+                height: "100%",
+                background: "linear-gradient(to bottom, #ef4444, #dc2626)",
+                borderRadius: "3px 0 0 3px",
+              }}
+            />
+
+            {/* Error icon */}
+            <div
+              style={{
+                flexShrink: 0,
+                width: "2rem",
+                height: "2rem",
+                borderRadius: "50%",
+                background: "rgba(239,68,68,0.15)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "0.125rem",
+              }}
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ef4444"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="15" y1="9" x2="9" y2="15" />
+                <line x1="9" y1="9" x2="15" y2="15" />
+              </svg>
+            </div>
+
+            {/* Content */}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div
+                style={{
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  color: "#fca5a5",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: "0.25rem",
+                }}
+              >
+                Login Gagal
+              </div>
+              <div
+                style={{
+                  fontSize: "0.8rem",
+                  color: "rgba(255,255,255,0.75)",
+                  lineHeight: 1.5,
+                }}
+              >
+                {error}
+              </div>
+            </div>
+
+            {/* Close button */}
+            <button
+              onClick={dismissToast}
+              style={{
+                flexShrink: 0,
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "0.5rem",
+                width: "1.75rem",
+                height: "1.75rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                transition: "all 0.2s",
+                color: "rgba(255,255,255,0.4)",
+                marginTop: "0.125rem",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(239,68,68,0.2)";
+                e.currentTarget.style.borderColor = "rgba(239,68,68,0.4)";
+                e.currentTarget.style.color = "#fca5a5";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+                e.currentTarget.style.color = "rgba(255,255,255,0.4)";
+              }}
+              aria-label="Tutup notifikasi"
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            {/* Progress bar (auto-dismiss indicator) */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                height: "3px",
+                background: "linear-gradient(to right, #ef4444, #f97316)",
+                borderRadius: "0 0 0 1rem",
+                animation: "toast-progress 5s linear forwards",
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes toast-enter {
+          from {
+            opacity: 0;
+            transform: translateX(calc(100% + 2rem));
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        @keyframes toast-progress {
+          from { width: 100%; }
+          to { width: 0%; }
+        }
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+          20%, 40%, 60%, 80% { transform: translateX(4px); }
+        }
+        .card-shake {
+          animation: shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+        }
+      `}</style>
+
+      <div className={`w-full max-w-md bg-white/[0.03] border border-white/10 rounded-2xl p-8 backdrop-blur-md shadow-2xl relative overflow-hidden ${error ? "card-shake" : ""}`}
+        style={error ? { borderColor: "rgba(239,68,68,0.3)" } : {}}
+      >
         {/* Glow decoration */}
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-yellow-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -42,13 +244,6 @@ export default function AdminLogin() {
           <p className="text-xs text-white/50 uppercase tracking-[0.2em] mt-1.5 mb-8">
             Admin Dashboard Portal
           </p>
-
-          {error && (
-            <div className="w-full mb-6 p-4 rounded-xl bg-red-500/15 border border-red-500/35 text-red-400 text-xs text-left leading-relaxed">
-              <div className="font-bold uppercase tracking-wider mb-1">Akses Ditolak</div>
-              {error}
-            </div>
-          )}
 
           <button
             onClick={loginWithGoogle}
@@ -83,5 +278,3 @@ export default function AdminLogin() {
     </div>
   );
 }
-
-
